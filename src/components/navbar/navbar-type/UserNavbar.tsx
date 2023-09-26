@@ -1,0 +1,68 @@
+import { useState } from "react";
+import { NavLink } from "react-router-dom";
+import { Navbar, NavbarBrand, NavbarToggler, Collapse, Nav, NavItem } from "reactstrap";
+import { useUserContext } from "../../../context/UserContext";
+import Swal from "sweetalert2";
+
+const UserNavbar = () => {
+
+    const [collapsed, setCollapsed] = useState(true);
+
+    const toggleNavbar = () => setCollapsed(!collapsed);
+
+    const { logout } = useUserContext();
+
+    const handleLogout = () => {
+
+        Swal.fire({
+            title: '¿Estas seguro de cerrar la sesión?',
+            text: "Una vez cerrada, deberas iniciar sesión nuevamente",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Cerrar sesión',
+            cancelButtonText: 'Cancelar'
+
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire(
+                    'Sesión terminada',
+                    'Hasta pronto...',
+                    'success'
+                )
+                logout();
+            }
+        })
+    }
+
+    return (
+        <Navbar className='navbar' expand="lg">
+            <NavbarBrand>Library - Management - User</NavbarBrand>
+            <NavbarToggler onClick={toggleNavbar} />
+            <Collapse isOpen={collapsed} navbar>
+                <Nav className='mr-auto mb-2 mb-lg-0 fw-bold' navbar>
+                    
+                    <NavItem>
+                        <NavLink to="/home" style={{ textDecoration: 'none',color: 'black' }} className="mx-1">
+                            Inicio
+                        </NavLink>
+                    </NavItem>
+
+                    <NavLink to="/book/list" style={{ textDecoration: 'none',color: 'black' }} className="mx-1">
+                        Libros disponibles
+                    </NavLink>
+
+                    <NavLink to="/book/borrow" style={{ textDecoration: 'none',color: 'black' }} className="mx-1">
+                        Prestamos
+                    </NavLink>
+
+                    <a onClick={handleLogout} style={{ textDecoration: 'none',color: 'black',cursor: 'pointer' }} className="mx-1">Cerrar Sesión</a>
+
+                </Nav>
+            </Collapse>
+        </Navbar>
+    )
+}
+
+export default UserNavbar
