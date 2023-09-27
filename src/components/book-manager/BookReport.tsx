@@ -1,6 +1,6 @@
 import React from 'react'
 import { IBook } from '../../interface';
-import {Col, Row } from 'reactstrap';
+import { Col, Row } from 'reactstrap';
 import BookCard from './cards/BookCard';
 
 interface Props {
@@ -16,15 +16,13 @@ const BookReport: React.FC<Props> = ({ bookList, setBookList, handleDelete, hand
 
     return (
         <Row>
-
             {
                 bookList.map((book, index) =>
                     <Col lg={3} sm={6} key={index}>
-                        <BookCard book={book} bookList={bookList} setBookList={setBookList} handleDelete={handleDelete} handleUpdate={handleUpdate} adminView={adminView}  borrowView={borrowView}></BookCard>
+                        <BookCard book={book} bookList={bookList} setBookList={setBookList} handleDelete={handleDelete} handleUpdate={handleUpdate} adminView={adminView} borrowView={borrowView}></BookCard>
                     </Col>
                 )
             }
-
         </Row>
     )
 }

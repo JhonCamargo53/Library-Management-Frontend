@@ -41,7 +41,7 @@ const BorrowBooks = () => {
         <Col className='p-3' >
           {loading ? (<Alert color='warning' className='text-center'><b>Cargando listado de libros...</b></Alert>)
             :
-            (<div>{bookList.length === 0 ? (<Alert color='warning' className='text-center'><b>No hay ningun libro disponible</b></Alert>) : (<BookReport bookList={bookList} setBookList={setBookList} borrowView></BookReport>)}</div>)}
+            (<div>{bookList.length === 0 ? (<Alert color='warning' className='text-center'><b>No tiene ningun prestamo de libro actualmente.</b></Alert>) : (<BookReport bookList={bookList} setBookList={setBookList} borrowView></BookReport>)}</div>)}
         </Col>
       </Row>
     </Container>
