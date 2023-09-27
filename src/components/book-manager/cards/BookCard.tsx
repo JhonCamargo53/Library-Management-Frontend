@@ -1,10 +1,11 @@
 import { Card, CardBody, CardTitle, CardHeader, Badge, Col, Row, CardFooter, Button, Input } from "reactstrap"
 import { IBook } from "../../../interface";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { validateBookValuesService } from "../../../service/ValidationService";
 import { genericErrorAlertService, genericSuccessAlertService } from "../../../service/AlertService";
 import Swal from "sweetalert2";
 import { borrowBook, returnBook } from "../../../controllers/BorrowBookController";
+import { addBookToFavoritesService, isFavoriteBookService, removeBookFromFavoritesService } from "../../../service/LocalStorage";
 
 interface Props {
   book: IBook;
@@ -26,6 +27,8 @@ const BookCard: React.FC<Props> = ({
   borrowView = false }) => {
 
   const [editMode, setEditMode] = useState(false);
+
+  const [isFavorite, setIsFavorite] = useState<boolean>(false);
 
   const [updatedBook, setUpdatedBook] = useState<IBook>(book);
 
@@ -140,6 +143,31 @@ const BookCard: React.FC<Props> = ({
     setUpdatedBook(book);
 
   }
+  
+  useEffect(() => {
+
+    verifyFavorite();
+
+  }, [])
+
+  const verifyFavorite = () => {
+
+    if (isFavoriteBookService(book.id as string)) {
+      setIsFavorite(true);
+    }
+
+  }
+
+  const handleFavorites = () => {
+
+    if (isFavoriteBookService(book.id as string)) {
+      removeBookFromFavoritesService(book.id as string)
+      setIsFavorite(false);
+    } else {
+      addBookToFavoritesService(book.id as string)
+      setIsFavorite(true);
+    }
+  }
 
   return (
     <Card className="justify-content-center my-1 "
@@ -157,7 +185,9 @@ const BookCard: React.FC<Props> = ({
           value={updatedBook.title}
           onChange={handleInputChange}
           required
-        />) : (<b>{book.title}</b>)}
+        />) : (<b>{book.title} </b>)}
+
+        <i className={isFavorite ? 'bi bi-star-fill text-white' : 'bi bi-star'} onClick={() => handleFavorites()}></i>
 
       </CardHeader>
 
@@ -304,7 +334,7 @@ const BookCard: React.FC<Props> = ({
 
                 {(!book.availability && !borrowView) ? (<Button color="info" className="col-12"><b>LIBRO ACTUALMENTE EN USO</b></Button>) : (null)}
 
-                {borrowView ? (<Button color="success" className="col-12" onClick={()=>handleReturnBook()}><b>REGRESAR LIBRO</b></Button>) : (null)}
+                {borrowView ? (<Button color="success" className="col-12" onClick={() => handleReturnBook()}><b>REGRESAR LIBRO</b></Button>) : (null)}
 
               </Col>
             </Row>
