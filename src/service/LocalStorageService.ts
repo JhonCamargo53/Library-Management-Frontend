@@ -1,3 +1,5 @@
+const FAVORITE_BOOKS = 'favoriteBooks';
+
 export const isFavoriteBookService = (bookId: string) => {
 
     const favoriteBooks: string[] = getFavoriteBooksService();
@@ -11,7 +13,7 @@ export const addBookToFavoritesService = (bookId: string) => {
     if (!favoriteBooks.includes(bookId)) {
         favoriteBooks.push(bookId);
 
-        localStorage.setItem('favoriteBooks', JSON.stringify(favoriteBooks));
+        localStorage.setItem(FAVORITE_BOOKS, JSON.stringify(favoriteBooks));
 
     }
 }
@@ -24,10 +26,10 @@ export const removeBookFromFavoritesService = (bookId: string) => {
 
     favoriteBooks.splice(index, 1);
 
-    localStorage.setItem('favoriteBooks', JSON.stringify(favoriteBooks));
+    localStorage.setItem(FAVORITE_BOOKS, JSON.stringify(favoriteBooks));
 }
 
 export const getFavoriteBooksService = (): string[] => {
-    return JSON.parse(localStorage.getItem('favoriteBooks') as string) || [];
+    return JSON.parse(localStorage.getItem(FAVORITE_BOOKS) as string) || [];
 }
 

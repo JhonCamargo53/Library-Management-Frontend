@@ -5,7 +5,7 @@ import { validateBookValuesService } from "../../../service/ValidationService";
 import { genericErrorAlertService, genericSuccessAlertService } from "../../../service/AlertService";
 import Swal from "sweetalert2";
 import { borrowBook, returnBook } from "../../../controllers/BorrowBookController";
-import { addBookToFavoritesService, isFavoriteBookService, removeBookFromFavoritesService } from "../../../service/LocalStorage";
+import { addBookToFavoritesService, isFavoriteBookService, removeBookFromFavoritesService } from "../../../service/LocalStorageService";
 
 interface Props {
   book: IBook;
@@ -143,7 +143,7 @@ const BookCard: React.FC<Props> = ({
     setUpdatedBook(book);
 
   }
-  
+
   useEffect(() => {
 
     verifyFavorite();
@@ -187,7 +187,7 @@ const BookCard: React.FC<Props> = ({
           required
         />) : (<b>{book.title} </b>)}
 
-        <i className={isFavorite ? 'bi bi-star-fill text-white' : 'bi bi-star'} onClick={() => handleFavorites()}></i>
+        {!adminView ? (<i className={isFavorite ? 'bi bi-star-fill ' : 'bi bi-star-fill text-white '} style={{ color: 'yellow' }} onClick={() => handleFavorites()}></i>) : (null)}
 
       </CardHeader>
 
