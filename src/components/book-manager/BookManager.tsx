@@ -107,7 +107,7 @@ const BookManager = () => {
         <Col className='p-3' >
           {loading ? (<Alert color='warning' className='text-center'><b>Cargando listado de libros...</b></Alert>)
             :
-            (<BookReport bookList={bookList} setBookList={setBookList} handleDelete={handleDelete} handleUpdate={handleUpdate}></BookReport>)}
+            (<BookReport bookList={bookList} setBookList={setBookList} handleDelete={handleDelete} handleUpdate={handleUpdate} adminView></BookReport>)}
         </Col>
       </Row>
     </Container>

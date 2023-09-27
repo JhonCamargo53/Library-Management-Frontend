@@ -9,9 +9,9 @@ import Register from './views/Register';
 import { Col, Container, Row } from 'reactstrap';
 import NavbarManager from './components/navbar/NavbarManager';
 import AdminManagement from './views/AdminManagement';
-import BookList from './views/BookList';
 import ProtectedRoute from './routes/ProtectedRoute';
 import BorrowBooks from './views/BorrowBooks';
+import AvailableBooks from './views/AvailableBooks';
 
 function App() {
 
@@ -36,7 +36,7 @@ function App() {
                 {/*User Access*/}
 
                 <Route path="/book/list" element={<ProtectedRoute allowedRole={["USER"]} />}>
-                  <Route path="/book/list" element={<BookList />} />
+                  <Route path="/book/list" element={<AvailableBooks />} />
                 </Route>
 
                 <Route path="/book/borrow" element={<ProtectedRoute allowedRole={["USER"]} />}>

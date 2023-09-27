@@ -1,19 +1,29 @@
-import { Card, CardBody, CardTitle, CardHeader, Badge, Col, Row, CardFooter, Button, Input} from "reactstrap"
+import { Card, CardBody, CardTitle, CardHeader, Badge, Col, Row, CardFooter, Button, Input } from "reactstrap"
 import { IBook } from "../../../interface";
 import { useState } from "react";
 import { validateBookValuesService } from "../../../service/ValidationService";
-import { genericErrorAlertService } from "../../../service/AlertService";
+import { genericErrorAlertService, genericSuccessAlertService } from "../../../service/AlertService";
 import Swal from "sweetalert2";
+import { borrowBook, returnBook } from "../../../controllers/BorrowBookController";
 
 interface Props {
   book: IBook;
+  borrowView?: boolean
   adminView?: boolean
   handleDelete?: (id: string) => void;
   setBookList: (bookList: Array<IBook>) => void;
+  bookList: Array<IBook>
   handleUpdate?: (book: IBook) => void;
 }
 
-const BookCard: React.FC<Props> = ({ book, adminView = false, handleDelete = (id: string) => { return id }, handleUpdate = (book: IBook) => { return book } }) => {
+const BookCard: React.FC<Props> = ({
+  book,
+  adminView = false,
+  handleDelete = (id: string) => { return id },
+  handleUpdate = (book: IBook) => { return book },
+  setBookList,
+  bookList,
+  borrowView = false }) => {
 
   const [editMode, setEditMode] = useState(false);
 
@@ -62,6 +72,67 @@ const BookCard: React.FC<Props> = ({ book, adminView = false, handleDelete = (id
     });
   };
 
+  const handleBorrowBook = async () => {
+
+    Swal.fire({
+      title: '¿Estas seguro de prestar este libro?',
+      text: "Una vez prestado, deberas regresarlo",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Prestar',
+      cancelButtonText: 'Cancelar'
+
+    }).then(async (result) => {
+
+      if (result.isConfirmed) {
+
+        try {
+
+          await borrowBook(book.id as string);
+          setBookList(bookList.filter(currentBook => currentBook.id !== book.id));
+          genericSuccessAlertService("Libro prestado con existo", "No olvides regresarlo")
+
+        } catch (error) {
+          console.log(error);
+          genericErrorAlertService("Error al realizar prestamo del libro", "Intentelo nuevamente")
+        }
+      }
+    })
+
+  }
+
+  const handleReturnBook = async () => {
+
+    Swal.fire({
+      title: '¿Estas seguro de regresar este libro?',
+      text: "Una vez regresado deberas prestarlo nuevamente para usarlo",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Regresar',
+      cancelButtonText: 'Cancelar'
+
+    }).then(async (result) => {
+
+      if (result.isConfirmed) {
+
+        try {
+
+          await returnBook(book.id as string);
+          setBookList(bookList.filter(currentBook => currentBook.id !== book.id));
+          genericSuccessAlertService("Libro regresado con existo", "Recuerda prestar otros libros de tu interes.")
+
+        } catch (error) {
+          console.log(error);
+          genericErrorAlertService("Error al regresar el libro", "Intentelo nuevamente.")
+        }
+      }
+    })
+
+  }
 
   const handleEdit = () => {
 
@@ -87,19 +158,20 @@ const BookCard: React.FC<Props> = ({ book, adminView = false, handleDelete = (id
           onChange={handleInputChange}
           required
         />) : (<b>{book.title}</b>)}
+
       </CardHeader>
 
       <CardBody className="text-center" style={{ background: "rgb(245,245,245)" }} >
         <Row >
           <Col >
 
-            <Row>
+            {!borrowView ? (<Row>
               <Col>
                 <Badge pill color={book.availability ? "success" : "danger"} className="my-2">
                   {book.availability ? "Disponible" : "No disponible"}
                 </Badge>
               </Col>
-            </Row>
+            </Row>) : (null)}
 
             <Row>
               <Col>
@@ -142,15 +214,15 @@ const BookCard: React.FC<Props> = ({ book, adminView = false, handleDelete = (id
 
                 {editMode ? (<div>
                   <img
-                  alt="Card"
-                  src={updatedBook.imgUrl}
-                  className="tex-center img-fluid rounded mb-2"
-                  style={{
-                    maxHeight: '15rem',
-                    minHeight: '15rem'
+                    alt="Card"
+                    src={updatedBook.imgUrl}
+                    className="tex-center img-fluid rounded mb-2"
+                    style={{
+                      maxHeight: '15rem',
+                      minHeight: '15rem'
 
-                  }}
-                />
+                    }}
+                  />
                   <Input
                     type="text"
                     id="imgUrl"
@@ -195,17 +267,17 @@ const BookCard: React.FC<Props> = ({ book, adminView = false, handleDelete = (id
               </Col>
             </Row>
 
+
             <Row >
               <Col>
 
                 {(book.availability && !adminView) ? (
-                  <Button color="success" className="col-12">
+                  <Button color="success" className="col-12" onClick={() => handleBorrowBook()}>
 
                     <b>PRESTAR LIBRO</b>
 
                   </Button>) :
                   (null)}
-
 
 
                 {(adminView && book.availability) ? (
@@ -228,7 +300,11 @@ const BookCard: React.FC<Props> = ({ book, adminView = false, handleDelete = (id
                     </Button>
 
                   </div>) :
-                  (<Button color="info" className="col-12"><b>LIBRO ACTUALMENTE EN USO</b></Button>)}
+                  (null)}
+
+                {(!book.availability && !borrowView) ? (<Button color="info" className="col-12"><b>LIBRO ACTUALMENTE EN USO</b></Button>) : (null)}
+
+                {borrowView ? (<Button color="success" className="col-12" onClick={()=>handleReturnBook()}><b>REGRESAR LIBRO</b></Button>) : (null)}
 
               </Col>
             </Row>
