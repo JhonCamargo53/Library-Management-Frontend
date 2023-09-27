@@ -16,7 +16,7 @@ export const updateBook = async (book: IBook) => {
     return await axiosInstance.put(mainRoute + '/book/updateBook', { book });
 }
 
-export const deleteBook = async (bookId: IBook) => {
+export const deleteBook = async (bookId: string) => {
 
-    return await axiosInstance.post(mainRoute + '/book/deleteBook/' + bookId);
+    return await axiosInstance.delete(mainRoute + '/book/deleteBook/' + bookId);
 }
