@@ -5,7 +5,7 @@ const Home = () => {
     return (
         <div>
 
-            <Container>
+            <Container fluid>
                 <h1 className="display-4">Bienvenido a Nuestra Librería</h1>
                 <p className="lead">
                     Descubre una amplia variedad de libros para todas las edades e intereses.

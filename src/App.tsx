@@ -17,7 +17,7 @@ function App() {
 
   return (
 
-    <Container fluid >
+    <Container fluid className='m-0 p-0'>
 
       <BrowserRouter>
 
