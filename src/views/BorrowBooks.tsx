@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { Container, Row, Col, Alert } from "reactstrap";
 import BookReport from "../components/book-manager/BookReport";
-import { getAvailableBooks } from "../controllers/BookController";
 import { IBook } from "../interface";
 import { genericErrorAlertService } from "../service/AlertService";
 import { getUserBorrows } from "../controllers/BorrowBookController";

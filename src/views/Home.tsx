@@ -1,9 +1,6 @@
 import { Button, Col, Container, Row } from "reactstrap"
-import { useUserContext } from "../context/UserContext"
 
 const Home = () => {
-
-    const a = useUserContext();
 
     return (
         <div>
