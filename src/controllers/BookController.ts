@@ -6,6 +6,11 @@ export const getBooks = async () => {
     return await axiosInstance.get(mainRoute + '/book/getBooks');
 }
 
+export const getAvailableBooks = async () => {
+
+    return await axiosInstance.get(mainRoute + '/book/getAvailableBooks');
+}
+
 export const addBook = async (book: IBook) => {
 
     return await axiosInstance.post(mainRoute + '/book/addBook', { book });

@@ -1,8 +1,6 @@
-import React, { useEffect, useState } from 'react'
-import { genericErrorAlertService } from '../../service/AlertService';
+import React from 'react'
 import { IBook } from '../../interface';
-import { Alert, Col, Container, Row } from 'reactstrap';
-import { getBooks } from '../../controllers/BookController';
+import { Alert, Col, Row } from 'reactstrap';
 import BookCard from './cards/BookCard';
 
 interface Props {
