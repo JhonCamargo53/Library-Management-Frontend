@@ -37,8 +37,8 @@ const UserNavbar = () => {
     }
 
     return (
-        <Navbar className='navbar' expand="lg">
-            <NavbarBrand>Library - Management - User</NavbarBrand>
+        <Navbar className='navbar mb-4' expand="md" style={{ background: "rgb(32,178,170)" }}>
+            <NavbarBrand><b>Library - Management - User</b></NavbarBrand>
             <NavbarToggler onClick={toggleNavbar} />
             <Collapse isOpen={collapsed} navbar>
                 <Nav className='mr-auto mb-2 mb-lg-0 fw-bold' navbar>

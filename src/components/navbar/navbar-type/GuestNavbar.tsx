@@ -10,8 +10,8 @@ const GuestNavbar = () => {
 
     return (
 
-        <Navbar color='info' className='navbar' expand="lg">
-            <NavbarBrand>Library - Management - Guest</NavbarBrand>
+        <Navbar className='navbar mb-4' expand="md" style={{ background: "rgb(32,178,170)" }}>
+            <NavbarBrand><b>Library - Management - Guest</b></NavbarBrand>
             <NavbarToggler onClick={toggleNavbar} />
             <Collapse isOpen={collapsed} navbar>
                 <Nav className='mr-auto mb-2 mb-lg-0 fw-bold' navbar>
