@@ -2,10 +2,10 @@ import axios from "axios";
 import { COOKIE_NAME } from "../Contants";
 import { getCookieValueService } from "../service/CookieService";
 
-export const BASE_URL = 'http://localhost:5000';
+export const BASE_URL = import.meta.env.VITE_URL_BACKEND || "http://localhost:3000";
 
 const axiosInstance = axios.create({
-    baseURL: 'http://localhost:5000/',
+    baseURL: 'http://localhost:3000/',
 });
 
 export const setAuthorizationHeader = (token: string | null) => {

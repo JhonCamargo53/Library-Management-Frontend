@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Container, Row, Col, Alert } from "reactstrap";
+import { Container, Row, Col, Alert, Card, CardBody, CardHeader } from "reactstrap";
 import BookReport from "../components/book-manager/BookReport";
 import { IBook } from "../interface";
 import { genericErrorAlertService } from "../service/AlertService";
@@ -37,13 +37,24 @@ const BorrowBooks = () => {
 
   return (
     <Container fluid>
-      <Row>
-        <Col className='p-3' >
-          {loading ? (<Alert color='warning' className='text-center'><b>Cargando listado de libros...</b></Alert>)
-            :
-            (<div>{bookList.length === 0 ? (<Alert color='warning' className='text-center'><b>No tiene ningun prestamo de libro actualmente.</b></Alert>) : (<BookReport bookList={bookList} setBookList={setBookList} borrowView></BookReport>)}</div>)}
-        </Col>
-      </Row>
+      <Card>
+
+        <CardHeader className='text-center'>
+
+          <b>MIS PRESTAMOS</b>
+
+        </CardHeader>
+        <CardBody>
+          <Row>
+            <Col className='p-3' >
+              {loading ? (<Alert color='warning' className='text-center'><b>Cargando listado de libros...</b></Alert>)
+                :
+                (<div>{bookList.length === 0 ? (<Alert color='warning' className='text-center'><b>No tiene ningun prestamo de libro actualmente.</b></Alert>) : (<BookReport bookList={bookList} setBookList={setBookList} borrowView></BookReport>)}</div>)}
+            </Col>
+          </Row>
+        </CardBody>
+
+      </Card>
     </Container>
   )
 

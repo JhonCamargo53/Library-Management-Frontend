@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import BookForm from './BookForm'
-import { Alert, Col, Container, Row } from 'reactstrap'
+import { Alert, Card, CardBody, CardHeader, Col, Container, Row } from 'reactstrap'
 import BookReport from './BookReport'
 import { deleteBook, getBooks, updateBook } from '../../controllers/BookController'
 import { IBook } from '../../interface'
@@ -18,13 +18,16 @@ const BookManager = () => {
 
   }, [])
 
+  
+
   const loadBookList = async () => {
 
     try {
 
+      setLoading(true);
+
       const response = await getBooks();
       setBookList(response.data);
-
     } catch (error) {
 
       console.log(error)
@@ -100,15 +103,27 @@ const BookManager = () => {
 
   return (
     <Container fluid>
-      <Row>
-        <Col lg={12}>
-          <BookForm bookList={bookList} setBookList={setBookList}></BookForm>
-        </Col>
-        <Col className='p-3' >
-          {loading ? (<Alert color='warning' className='text-center'><b>Cargando listado de libros...</b></Alert>) :
-            (<div>{bookList.length === 0 ? (<Alert color='warning' className='text-center'><b>No hay libros registrados</b></Alert>) : (<BookReport bookList={bookList} setBookList={setBookList} handleDelete={handleDelete} handleUpdate={handleUpdate} adminView></BookReport>)}</div>)}
-        </Col>
-      </Row>
+      <Card>
+
+        <CardHeader className='text-center'>
+
+          <b>TODOS LOS LIBROS REGISTRADOS</b>
+
+        </CardHeader>
+
+        <CardBody>
+          <Row>
+            <Col lg={12}>
+              <BookForm bookList={bookList} setBookList={setBookList}></BookForm>
+            </Col>
+            <Col className='p-3' >
+              {loading ? (<Alert color='warning' className='text-center'><b>Cargando listado de libros...</b></Alert>) :
+                (<div>{bookList.length === 0 ? (<Alert color='warning' className='text-center'><b>No hay libros registrados</b></Alert>) : (<BookReport bookList={bookList} setBookList={setBookList} handleDelete={handleDelete} handleUpdate={handleUpdate} adminView></BookReport>)}</div>)}
+            </Col>
+          </Row>
+        </CardBody>
+
+      </Card>
     </Container>
   )
 }

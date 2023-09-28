@@ -2,7 +2,7 @@ import React, { useEffect, createContext, useState, useContext } from 'react';
 import { IUser } from '../interface';
 import { getCookieValueService } from '../service/CookieService';
 import { COOKIE_NAME } from '../Contants';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 interface Props {
     children: any
@@ -32,10 +32,12 @@ const UserContextProvider: React.FC<Props> = ({ children }) => {
     const [user, setUser] = useState<IUser | null>(null);
     const [token, setToken] = useState<string | null>(null);
     const navigate = useNavigate();
+    const location = useLocation();
+
 
     useEffect(() => {
         validateAuth();
-    }, []);
+    }, [location]);
 
     const logout = () => {
 
