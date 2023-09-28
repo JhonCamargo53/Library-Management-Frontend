@@ -1,7 +1,6 @@
 
 import './App.css'
-
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route} from 'react-router-dom';
 import Login from './views/Login';
 import UserContextProvider from './context/UserContext';
 import Home from './views/Home';
@@ -19,7 +18,7 @@ function App() {
 
     <Container fluid className='m-0 p-0'>
 
-      <BrowserRouter>
+      <Router>
 
         <UserContextProvider>
 
@@ -65,7 +64,7 @@ function App() {
 
         </UserContextProvider>
 
-      </BrowserRouter>
+      </Router>
 
     </Container>
 

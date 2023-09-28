@@ -11,7 +11,7 @@ const AvailableBooks = () => {
     const [bookList, setBookList] = useState<Array<IBook>>([]);
     const [originalBookList, setOriginalBookList] = useState<Array<IBook>>([]);
     const [isFiltered, setIsFiltered] = useState<boolean>(false);
-    
+
 
     const [filterValues, setFilterValues] = useState({ selectedFilter: "", filterArgs: "" });
     useEffect(() => {
@@ -23,6 +23,10 @@ const AvailableBooks = () => {
     const bookFilter = () => {
 
         let filteredBookList: Array<IBook> = [];
+
+        if (filterValues.selectedFilter.trim() === "") return genericErrorAlertService("Información Incompleta", "Selecciona un tipo de filtro");
+
+        if (filterValues.filterArgs.trim() === "") return genericErrorAlertService("Información Incompleta", "Completa la información a filtrar");
 
         switch (filterValues.selectedFilter) {
 
@@ -38,7 +42,7 @@ const AvailableBooks = () => {
                 break;
         }
 
-        genericSuccessAlertService("Libros filtrados con exito","Se encontraron los siguientes libros");
+        genericSuccessAlertService("Libros filtrados con exito", "Se encontraron los siguientes libros");
         setBookList(filteredBookList);
         setIsFiltered(true);
 
