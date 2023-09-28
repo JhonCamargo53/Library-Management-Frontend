@@ -45,19 +45,21 @@ const UserNavbar = () => {
                     
                     <NavItem>
                         <NavLink to="/home" style={{ textDecoration: 'none',color: 'black' }} className="mx-1">
-                            Inicio
+                        <i className="bi bi-house-door-fill"></i> Inicio 
                         </NavLink>
                     </NavItem>
 
                     <NavLink to="/book/list" style={{ textDecoration: 'none',color: 'black' }} className="mx-1">
-                        Libros disponibles
+                    <i className="bi bi-journal-plus"></i> Libros disponibles
+
                     </NavLink>
 
                     <NavLink to="/book/borrow" style={{ textDecoration: 'none',color: 'black' }} className="mx-1">
-                        Prestamos
+                    <i className="bi bi-journal-check"></i>   Prestamos
+                 
                     </NavLink>
 
-                    <a onClick={handleLogout} style={{ textDecoration: 'none',color: 'black',cursor: 'pointer' }} className="mx-1">Cerrar Sesión</a>
+                    <a onClick={handleLogout} style={{ textDecoration: 'none',color: 'black',cursor: 'pointer' }} className="mx-1"> <i className="bi bi-box-arrow-right"></i>Cerrar Sesión</a>
 
                 </Nav>
             </Collapse>

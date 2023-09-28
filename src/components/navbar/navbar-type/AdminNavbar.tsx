@@ -44,15 +44,15 @@ const AdminNavbar = () => {
 
           <NavItem>
             <NavLink to="/home" style={{ textDecoration: 'none',color: 'black' }} className="mx-1">
-              Inicio
+            <i className="bi bi-house-door-fill"></i> Inicio
             </NavLink>
           </NavItem>
 
           <NavLink to="/book/management" style={{ textDecoration: 'none',color: 'black' }} className="mx-1">
-            Administrar
+          <i className="bi bi-journal-bookmark-fill"></i>  Administrar
           </NavLink>
 
-          <a onClick={handleLogout} style={{ textDecoration: 'none',color: 'black',cursor: 'pointer' }} className="mx-1">Cerrar Sesión</a>
+          <a onClick={handleLogout} style={{ textDecoration: 'none',color: 'black',cursor: 'pointer' }} className="mx-1"><i className="bi bi-box-arrow-right"></i>Cerrar Sesión</a>
 
         </Nav>
       </Collapse>

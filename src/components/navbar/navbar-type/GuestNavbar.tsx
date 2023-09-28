@@ -16,15 +16,15 @@ const GuestNavbar = () => {
             <Collapse isOpen={collapsed} navbar>
                 <Nav className='mr-auto mb-2 mb-lg-0 fw-bold' navbar>
                     <NavItem>
-                        <NavLink to="/home" style={{ textDecoration: 'none',color: 'black' }} className="mx-1">
-                            Inicio
+                        <NavLink to="/home" style={{ textDecoration: 'none', color: 'black' }} className="mx-1">
+                            <i className="bi bi-house-door-fill"></i> Inicio
                         </NavLink>
                     </NavItem>
-                    <NavLink to="/register" style={{ textDecoration: 'none',color: 'black' }} className="mx-1">
-                        Registrarse
+                    <NavLink to="/register" style={{ textDecoration: 'none', color: 'black' }} className="mx-1">
+                        <i className="bi bi-person-circle"></i> Registrarse
                     </NavLink>
-                    <NavLink to="/login" style={{ textDecoration: 'none',color: 'black' }} className="mx-1">
-                        Iniciar Sesión
+                    <NavLink to="/login" style={{ textDecoration: 'none', color: 'black' }} className="mx-1">
+                        <i className="bi bi-door-open-fill"></i>  Iniciar Sesión
                     </NavLink>
 
                 </Nav>
