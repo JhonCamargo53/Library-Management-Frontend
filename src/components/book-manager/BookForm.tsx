@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { IBook } from "../../interface";
 import { genericErrorAlertService, genericSuccessAlertService } from "../../service/AlertService";
-import { Row, Col, FormGroup, Label, Input, Button, Card, CardHeader, CardBody } from "reactstrap";
+import { Row, Col, FormGroup, Label, Input, Button, Card, CardHeader, CardBody, FormText } from "reactstrap";
 import { addBook } from "../../controllers/BookController";
 import { validateBookValuesService } from "../../service/ValidationService";
 
@@ -31,7 +31,7 @@ const BookForm: React.FC<Props> = ({ bookList, setBookList }) => {
     });
   };
 
- 
+
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
 
@@ -77,9 +77,9 @@ const BookForm: React.FC<Props> = ({ bookList, setBookList }) => {
 
             <form onSubmit={handleSubmit}>
               <Row>
-                <Col>
+                <Col lg={3} sm={6}>
                   <FormGroup>
-                    <Label for="title">Título (*)</Label>
+
                     <Input
                       type="text"
                       id="title"
@@ -88,11 +88,14 @@ const BookForm: React.FC<Props> = ({ bookList, setBookList }) => {
                       onChange={handleInputChange}
                       required
                     />
+                    <FormText>
+                      Título (*)
+                    </FormText>
                   </FormGroup>
                 </Col>
-                <Col>
+                <Col lg={3} sm={6}>
                   <FormGroup>
-                    <Label for="owner">Propietario (*)</Label>
+
                     <Input
                       type="text"
                       id="owner"
@@ -101,12 +104,15 @@ const BookForm: React.FC<Props> = ({ bookList, setBookList }) => {
                       onChange={handleInputChange}
                       required
                     />
+                    <FormText>
+                      Propietario (*)
+                    </FormText>
                   </FormGroup>
                 </Col>
 
-                <Col>
+                <Col lg={3} sm={6}>
                   <FormGroup>
-                    <Label for="releaseYear">Año de Publicación (*)</Label>
+
                     <Input
                       type="text"
                       id="releaseYear"
@@ -115,12 +121,14 @@ const BookForm: React.FC<Props> = ({ bookList, setBookList }) => {
                       onChange={handleInputChange}
                       required
                     />
+                    <FormText>
+                      Año de Publicación (*)
+                    </FormText>
                   </FormGroup>
                 </Col>
 
-                <Col>
+                <Col lg={3} sm={6}>
                   <FormGroup>
-                    <Label for="imgUrl">URL de Imagen (*)</Label>
                     <Input
                       type="text"
                       id="imgUrl"
@@ -129,6 +137,11 @@ const BookForm: React.FC<Props> = ({ bookList, setBookList }) => {
                       onChange={handleInputChange}
                       required
                     />
+
+                    <FormText>
+                      URL de Imagen (*)
+                    </FormText>
+
                   </FormGroup>
                 </Col>
               </Row>
@@ -136,7 +149,7 @@ const BookForm: React.FC<Props> = ({ bookList, setBookList }) => {
               <Row>
                 <Col>
                   <FormGroup>
-                    <Label for="description">Descripción (*)</Label>
+
                     <Input
                       type="textarea"
                       id="description"
@@ -145,6 +158,11 @@ const BookForm: React.FC<Props> = ({ bookList, setBookList }) => {
                       onChange={handleInputChange}
                       required
                     />
+
+                    <FormText>
+                      Descripción (*)
+                    </FormText>
+
                   </FormGroup>
                 </Col>
               </Row>

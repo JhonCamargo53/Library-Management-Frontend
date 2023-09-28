@@ -314,19 +314,18 @@ const BookCard: React.FC<Props> = ({
                   <div>
 
                     {!editMode ? (<Button color="danger" className="col-12" onClick={() => handleDelete(book.id as string)}>
-
+                    <i className="bi bi-trash3-fill m-2"></i>
                       <b>ELIMINAR</b>
 
                     </Button>) : (<Button color="success" className="col-12" onClick={() => handleUpdateCard()}>
-
+                    <i className="bi bi-floppy-fill m-2"></i>
                       <b>GUARDAR EDICIÓN</b>
 
                     </Button>)}
 
                     <Button color="warning" className="col-12 mt-1" onClick={() => handleEdit()}>
-
+                      <i className="bi bi-pencil-square m-2"></i>
                       <b>{editMode ? ("CANCELAR EDICIÓN") : ("EDITAR")}</b>
-
                     </Button>
 
                   </div>) :
