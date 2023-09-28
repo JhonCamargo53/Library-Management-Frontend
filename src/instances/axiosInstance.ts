@@ -2,7 +2,7 @@ import axios from "axios";
 import { COOKIE_NAME } from "../Contants";
 import { getCookieValueService } from "../service/CookieService";
 
-export const BASE_URL = import.meta.env.VITE_URL_BACKEND || "http://localhost:3000";
+export const BASE_URL = "https://diplomado.onrender.com" || "http://localhost:3000";
 
 const axiosInstance = axios.create({
     baseURL: 'http://localhost:3000/',
