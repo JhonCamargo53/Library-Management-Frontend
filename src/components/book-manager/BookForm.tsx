@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { IBook } from "../../interface";
 import { genericErrorAlertService, genericSuccessAlertService } from "../../service/AlertService";
-import { Row, Col, FormGroup, Label, Input, Button, Card, CardHeader, CardBody, FormText } from "reactstrap";
+import { Row, Col, FormGroup, Input, Button, Card, CardHeader, CardBody, FormText } from "reactstrap";
 import { addBook } from "../../controllers/BookController";
 import { validateBookValuesService } from "../../service/ValidationService";
 
