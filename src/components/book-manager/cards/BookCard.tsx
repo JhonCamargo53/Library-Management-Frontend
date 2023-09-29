@@ -332,7 +332,7 @@ const BookCard: React.FC<Props> = ({
                 </div>) :
                 (null)}
 
-              {(!book.availability && !borrowView) ? (<Button color="info" className="col-12"><b>LIBRO ACTUALMENTE EN USO</b></Button>) : (null)}
+              {(!book.availability && !borrowView) ? (<Button color="info" className="col-12"> <i className ="bi bi-alarm-fill m-1"></i><b>LIBRO ACTUALMENTE EN USO</b></Button>) : (null)}
 
               {borrowView ? (<Button color="success" className="col-12" onClick={() => handleReturnBook()}><b>REGRESAR LIBRO</b></Button>) : (null)}
 

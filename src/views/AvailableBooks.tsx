@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { getAvailableBooks } from '../controllers/BookController';
 import { IBook } from '../interface';
 import { genericErrorAlertService, genericSuccessAlertService } from '../service/AlertService';
-import { Container, Row, Col, Alert, FormGroup, Input, Button, FormText} from 'reactstrap';
+import { Container, Row, Col, Alert, FormGroup, Input, Button, FormText } from 'reactstrap';
 import BookReport from '../components/book-manager/BookReport';
 
 const AvailableBooks = () => {
@@ -97,7 +97,7 @@ const AvailableBooks = () => {
                         <Input type="select" name="filter" id="filter" placeholder="Ingrese su contraseña" onChange={(e) => setFilterValues({ ...filterValues, selectedFilter: e.target.value })} value={filterValues.selectedFilter}>
                             <option value="">Selecione un filtro</option>
                             <option value="owner">Por autor</option>
-                            <option value="title">Por Titulo</option></Input>
+                            <option value="title">Por título</option></Input>
                         <FormText>
                             <b style={{ color: "white" }}>Filtro de libros</b>
                         </FormText>
@@ -117,7 +117,7 @@ const AvailableBooks = () => {
                 </Col>
 
                 {isFiltered ? (<Col lg={12}>
-                    <Button color='danger' onClick={() => handleRemoveFilter()} className='col-12'> <b>Quitar filtro</b></Button>
+                    <Button color='danger' onClick={() => handleRemoveFilter()} className='col-12 mt-2'> <b>REMOVER FILTRO</b></Button>
                 </Col>) : (null)}
 
                 <Col>
@@ -128,9 +128,10 @@ const AvailableBooks = () => {
 
             <Row>
                 <Col className='p-3' >
-                    {loading ? (<Alert color='warning' className='text-center'><b>Cargando listado de libros...</b></Alert>)
+                    {loading ? (<Alert className='text-center' style={{ backgroundColor: "rgba(255, 255, 255, 0.5)" }}><b>CARGANDO LISTADO DE LIBROS...</b></Alert>)
                         :
-                        (<div>{bookList.length === 0 ? (<Alert color='warning' className='text-center'><b>No hay ningun libro disponible</b></Alert>) : (<BookReport bookList={bookList} setBookList={setBookList}></BookReport>)}</div>)}
+                        (<div>{bookList.length === 0 ? (<Alert style={{ backgroundColor: "rgba(255, 255, 255, 0.5)" }} className='text-center'><b className='text-white'>NO HAY LIBROS DISPONIBLES</b></Alert>) 
+                        : (<BookReport bookList={bookList} setBookList={setBookList}></BookReport>)}</div>)}
                 </Col>
             </Row>
 

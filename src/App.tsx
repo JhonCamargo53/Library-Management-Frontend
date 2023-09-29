@@ -7,10 +7,10 @@ import Home from './views/Home';
 import Register from './views/Register';
 import { Col, Container, Row } from 'reactstrap';
 import NavbarManager from './components/navbar/NavbarManager';
-import AdminManagement from './views/AdminManagement';
 import ProtectedRoute from './routes/ProtectedRoute';
 import BorrowBooks from './views/BorrowBooks';
 import AvailableBooks from './views/AvailableBooks';
+import BookManager from './components/book-manager/BookManager';
 
 function App() {
 
@@ -45,7 +45,7 @@ function App() {
                 {/*Admin Access*/}
 
                 <Route path="/book/management" element={<ProtectedRoute allowedRole={["ADMIN"]} />}>
-                  <Route path="/book/management" element={<AdminManagement />} />
+                  <Route path="/book/management" element={<BookManager />} />
                 </Route>
 
                 {/*Auth*/}

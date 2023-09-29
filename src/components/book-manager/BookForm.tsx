@@ -158,7 +158,8 @@ const BookForm: React.FC<Props> = ({ bookList, setBookList }) => {
             </Col>
           </Row>
 
-          <Button style={{ background: "#3085d6" }} className="col-12" type="submit" disabled={loading}>{loading ? "Agregando Libro..." : "Agregar libro"}</Button>
+          <Button style={{ background: "#3085d6" }} className="col-12" type="submit" disabled={loading}><b>{loading ? "AGREGANDO LIBRO..." : "AGREGAR LIBRO"}</b></Button>
+          
           <hr />
         </form>
       </Col>
