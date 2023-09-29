@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Container, Row, Col, FormGroup, Label, Input, Button, CardHeader, CardBody, Card } from 'reactstrap'
+import { Container, Row, Col, FormGroup, Input, Button, FormText } from 'reactstrap'
 import { registerUser } from '../controllers/AuthController';
 import { IUser } from '../interface';
 import { useUserContext } from '../context/UserContext';
@@ -70,83 +70,91 @@ const Register = () => {
   }
 
   return (
-    <Container className=''>
-      <Row className="d-flex justify-content-center">
-        <Col>
-          <Card>
-            <CardHeader className='text-center'>
-              <b> <h2>Registro de Usuarios</h2></b>
-            </CardHeader>
+    <Container className='p-3 text-white rounded' style={{
+      backgroundColor: "rgba(0, 0, 0, 0.5)",
+      color: "#fff"
+    }}>
+      <Row>
 
-            <CardBody>
-              <Row>
-                <Col md="12">
+        <Col sm={12} lg={6}>
+          <Col md={12} className='text-center rounded p-1 '>
+            <b><h2>REGISTRAR USUARIO</h2></b>
+            <hr />
+          </Col>
+          <Col md={12}>
 
-                  <form onSubmit={handleSubmit}>
-                    <FormGroup>
-                      <Label for="firstName">Nombre</Label>
-                      <Input
-                        type="text"
-                        name="firstName"
-                        id="firstName"
-                        placeholder="Ingrese su nombre"
-                        onChange={handleInputChange}
-                        value={registerValues.firstName}
-                        required
-                      />
+            <form onSubmit={handleSubmit} className='p-3 text-white rounded' style={{
+              backgroundColor: "rgba(255, 255, 255, 0.5)",
+            }}>
 
-                    </FormGroup>
-                    <FormGroup>
-                      <Label for="lastName">Apellido</Label>
-                      <Input
-                        type="text"
-                        name="lastName"
-                        id="lastName"
-                        placeholder="Ingrese su apellido"
-                        onChange={handleInputChange}
-                        value={registerValues.lastName}
-                        required
+              <FormGroup >
+              <FormText>
+                  <b style={{ color: "white" }}> Nombre de usuario</b>
+                </FormText>
+                <Input
+                  type="text"
+                  name="firstName"
+                  id="firstName"
 
-                      />
-                    </FormGroup>
-                    <FormGroup>
-                      <Label for="email">Correo Electrónico</Label>
-                      <Input
-                        type="email"
-                        name="email"
-                        id="email"
-                        placeholder="Ingrese su correo electrónico"
-                        onChange={handleInputChange}
-                        value={registerValues.email}
-                        required
+                  onChange={handleInputChange}
+                  value={registerValues.firstName}
+                  required
+                />
+              </FormGroup>
 
-                      />
-                    </FormGroup>
-                    <FormGroup>
-                      <Label for="password">Contraseña</Label>
-                      <Input
-                        type="password"
-                        name="password"
-                        id="password"
-                        placeholder="Ingrese su contraseña"
-                        onChange={handleInputChange}
-                        value={registerValues.password}
-                        required
+              <FormGroup>
+                <FormText>
+                  <b style={{ color: "white" }}>  Apellido de usuario</b>
+                </FormText>
+                <Input
+                  type="text"
+                  name="lastName"
+                  id="lastName"
+                  onChange={handleInputChange}
+                  value={registerValues.lastName}
+                  required
+                />
+              </FormGroup>
 
-                      />
+              <FormGroup>
+                <FormText>
+                  <b style={{ color: "white" }}> Correo Electrónico</b>
+                </FormText>
+                <Input
+                  type="email"
+                  name="email"
+                  id="email"
+                  onChange={handleInputChange}
+                  value={registerValues.email}
+                  required
+                />
+              </FormGroup>
 
-                    </FormGroup>
+              <FormGroup>
+                <FormText>
+                  <b style={{ color: "white" }}>Contraseña</b>
+                </FormText>
+                <Input
+                  type="password"
+                  name="password"
+                  id="password"
+                  onChange={handleInputChange}
+                  value={registerValues.password}
+                  required
+                />
+              </FormGroup>
 
-                    <Button className='col-12' color="success" type="submit" disabled={loading}><b>{loading ? "Registrando Usuario..." : "Registrar Usuario"}</b></Button>
-                    <Button className='col-12 mt-1' color="primary" type="button" ><b>No tengo cuenta</b></Button>
+              <Button className='col-12' color="success" type="submit" disabled={loading}><b>{loading ? "Registrando Usuario..." : "Registrar Usuario"}</b></Button>
+              <Button className='col-12 mt-1' color="primary" type="button" onClick={() => navigate('/login')} ><b>Ya tengo cuenta</b></Button>
 
-                  </form>
-                </Col>
-              </Row>
-            </CardBody>
-          </Card>
+            </form>
+          </Col>
+        </Col>
+        <Col sm={12} lg={6} className='d-flex justify-content-center align-items-center'>
+          <img className="tex-center img-fluid rounded mb-2" src="https://png.pngtree.com/png-clipart/20230825/original/pngtree-virtual-library-online-book-club-picture-image_8477314.png" alt="" />
         </Col>
       </Row>
+
     </Container>
   )
 }

@@ -6,7 +6,7 @@ const Home = () => {
     return (
         <div>
             {/* Sección de bienvenida */}
-            <Container fluid className="welcome-section rounded text-center" style={{
+            <Container fluid className="rounded text-center" style={{
                 backgroundColor: "rgba(0, 0, 0, 0.5)",
                 color: "#fff",
                 padding: "20px",

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Container, Row, Col, FormGroup, Label, Input, Button } from "reactstrap";
+import { Container, Row, Col, FormGroup, Input, Button, FormText } from "reactstrap";
 import { genericErrorAlertService, genericSuccessAlertService } from "../service/AlertService";
 import { loginUser } from "../controllers/AuthController";
 import { setCookieService } from "../service/CookieService";
@@ -58,40 +58,70 @@ const Login = () => {
   }
 
   return (
-    <Container>
-      <Row className="justify-content-center">
-        <Col md="6">
-          <h2>Iniciar Sesión</h2>
-          <form onSubmit={handleSubmit}>
-            <FormGroup>
-              <Label for="email">Correo Electrónico</Label>
-              <Input
-                type="email"
-                name="email"
-                id="email"
-                placeholder="Ingrese su correo electrónico"
-                onChange={handleInputChange}
-                value={loginValues.email}
-              />
-            </FormGroup>
 
-            <FormGroup>
-              <Label for="password">Contraseña</Label>
-              <Input
-                type="password"
-                name="password"
-                id="password"
-                placeholder="Ingrese su contraseña"
-                onChange={handleInputChange}
-                value={loginValues.password}
-              />
-
-            </FormGroup>
-            <Button color="primary" type="submit" disabled={loading}>{loading ? "Iniciando Sesión..." : "Iniciar Sesión"}</Button>
-          </form>
+    <Container className='p-3 text-white rounded' style={{
+      backgroundColor: "rgba(0, 0, 0, 0.5)",
+      color: "#fff"
+    }}>
+      <Row className="d-flex justify-content-center">
+        <Col md={12} className='text-center rounded p-1  '>
+          <b><h2>INICIAR SESIÓN</h2></b>
+          <hr />
         </Col>
+        <Col sm={12} lg={6} className="d-flex justify-content-center align-items-center">
+
+          <Col md={12}>
+
+            <form onSubmit={handleSubmit} className='p-3 text-white rounded' style={{
+              backgroundColor: "rgba(255, 255, 255, 0.5)",
+            }}>
+
+
+              <FormGroup>
+                <FormText>
+                  <b style={{ color: "white" }}> Correo Electrónico</b>
+                </FormText>
+                <Input
+                  type="email"
+                  name="email"
+                  id="email"
+                  onChange={handleInputChange}
+                  value={loginValues.email}
+                  required
+                />
+              </FormGroup>
+
+              <FormGroup>
+                <FormText>
+                  <b style={{ color: "white" }}>Contraseña</b>
+                </FormText>
+                <Input
+                  type="password"
+                  name="password"
+                  id="password"
+                  onChange={handleInputChange}
+                  value={loginValues.password}
+                  required
+                />
+              </FormGroup>
+              <hr />
+
+              <Button className='col-12' color="success" type="submit" disabled={loading}><b>{loading ? "Iniciando sesión..." : "Iniciar Sesión"}</b></Button>
+              <Button className='col-12 mt-1' color="primary" type="button" onClick={() => navigate('/register')} ><b>No tengo cuenta</b></Button>
+              <hr />
+
+            </form>
+          </Col>
+        </Col>
+        <Col sm={12} lg={6} className='d-flex justify-content-center align-items-center'>
+          <img className="tex-center img-fluid rounded mb-2" src="https://png.pngtree.com/png-clipart/20230825/original/pngtree-virtual-library-online-book-club-picture-image_8477314.png" alt="" />
+        </Col>
+
       </Row>
+
     </Container>
+
+
   );
 
 }
