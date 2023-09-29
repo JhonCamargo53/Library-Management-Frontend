@@ -32,13 +32,13 @@ const AvailableBooks = () => {
 
             case "title":
 
-                filteredBookList = originalBookList.filter(book => book.title === filterValues.filterArgs)
+                filteredBookList = originalBookList.filter(book => book.title.toLocaleLowerCase().includes(filterValues.filterArgs.toLocaleLowerCase()))
 
                 break;
 
             case "owner":
 
-                filteredBookList = originalBookList.filter(book => book.owner === filterValues.filterArgs)
+                filteredBookList = originalBookList.filter(book => book.owner.toLocaleLowerCase().includes(filterValues.filterArgs.toLocaleLowerCase()))
                 break;
         }
 
@@ -81,35 +81,7 @@ const AvailableBooks = () => {
 
     return (
         <Container fluid>
-            <Row className='my-2'>
-                <Col lg={3}>
-                    <FormGroup>
-                        <Input type="select" name="filter" id="filter" placeholder="Ingrese su contraseña" onChange={(e) => setFilterValues({ ...filterValues, selectedFilter: e.target.value })} value={filterValues.selectedFilter}>
-                            <option value="">Selecione un filtro</option>
-                            <option value="owner">Por autor</option>
-                            <option value="title">Por Titulo</option></Input>
-                        <FormText>
-                            Filtro dr libros
-                        </FormText>
-                    </FormGroup>
-                </Col>
-                <Col lg={5}>
-                    <FormGroup>
-                        <Input type="text" name="filterArgs" id="filterArgs" placeholder="Ingrese la información" onChange={(e) => setFilterValues({ ...filterValues, filterArgs: e.target.value })} value={filterValues.filterArgs} />
-                        <FormText>
-                            Información a filtrar
-                        </FormText>
-                    </FormGroup>
-                </Col>
-                <Col lg={4}>
-                    <Button className='col-12' onClick={() => bookFilter()}><b>FILTRAR</b></Button>
-                </Col>
 
-                {isFiltered ? (<Col lg={12}>
-                    <Button color='danger' onClick={() => handleRemoveFilter()} className='col-12'> <b>Quitar filtro</b></Button>
-                </Col>) : (null)}
-
-            </Row>
 
             <Card>
 
@@ -119,6 +91,36 @@ const AvailableBooks = () => {
 
                 </CardHeader>
                 <CardBody>
+
+                    <Row className='my-2'>
+                        <Col lg={3}>
+                            <FormGroup>
+                                <Input type="select" name="filter" id="filter" placeholder="Ingrese su contraseña" onChange={(e) => setFilterValues({ ...filterValues, selectedFilter: e.target.value })} value={filterValues.selectedFilter}>
+                                    <option value="">Selecione un filtro</option>
+                                    <option value="owner">Por autor</option>
+                                    <option value="title">Por Titulo</option></Input>
+                                <FormText>
+                                    Filtro de libros
+                                </FormText>
+                            </FormGroup>
+                        </Col>
+                        <Col lg={5}>
+                            <FormGroup>
+                                <Input type="text" name="filterArgs" id="filterArgs" placeholder="Ingrese la información" onChange={(e) => setFilterValues({ ...filterValues, filterArgs: e.target.value })} value={filterValues.filterArgs} />
+                                <FormText>
+                                    Información a filtrar
+                                </FormText>
+                            </FormGroup>
+                        </Col>
+                        <Col lg={4}>
+                            <Button className='col-12' onClick={() => bookFilter()}><b>FILTRAR</b></Button>
+                        </Col>
+
+                        {isFiltered ? (<Col lg={12}>
+                            <Button color='danger' onClick={() => handleRemoveFilter()} className='col-12'> <b>Quitar filtro</b></Button>
+                        </Col>) : (null)}
+
+                    </Row>
                     <Row>
                         <Col className='p-3' >
                             {loading ? (<Alert color='warning' className='text-center'><b>Cargando listado de libros...</b></Alert>)
