@@ -47,9 +47,9 @@ const BorrowBooks = () => {
 
       <Row>
         <Col className='p-3' >
-          {loading ? (<Alert className='text-center' style={{ backgroundColor: "rgba(255, 255, 255, 0.5)" }}><b>CARGANDO LISTADO DE LIBROS...</b></Alert>)
+          {loading ? (<Alert className='text-center' style={{ backgroundColor: "rgba(255, 255, 255, 0.5)" }}><b className='text-white'>CARGANDO LISTADO DE LIBROS...</b></Alert>)
             :
-            (<div>{bookList.length === 0 ? (<Alert className='text-center' style={{ backgroundColor: "rgba(255, 255, 255, 0.5)" }}><b>NO TIENE REGISTRO DE NINGUN PRESTAMO.</b></Alert>) : (<BookReport bookList={bookList} setBookList={setBookList} borrowView></BookReport>)}</div>)}
+            (<div>{bookList.length === 0 ? (<Alert className='text-center' style={{ backgroundColor: "rgba(255, 255, 255, 0.5)" }}><b className='text-white'>NO TIENE REGISTRO DE NINGUN PRESTAMO.</b></Alert>) : (<BookReport bookList={bookList} setBookList={setBookList} borrowView></BookReport>)}</div>)}
         </Col>
       </Row>
 

@@ -117,8 +117,8 @@ const BookManager = () => {
           <BookForm bookList={bookList} setBookList={setBookList}></BookForm>
         </Col>
         <Col className='p-3' >
-          {loading ? (<Alert className='text-center' style={{ backgroundColor: "rgba(255, 255, 255, 0.5)" }}><b>CARGANDO LISTADO DE LIBROS...</b></Alert>) :
-            (<div>{bookList.length === 0 ? (<Alert className='text-center' style={{ backgroundColor: "rgba(255, 255, 255, 0.5)" }}><b>NO HAY LIBROS REGISTRADOS</b></Alert>) : (<BookReport bookList={bookList} setBookList={setBookList} handleDelete={handleDelete} handleUpdate={handleUpdate} adminView></BookReport>)}</div>)}
+          {loading ? (<Alert className='text-center' style={{ backgroundColor: "rgba(255, 255, 255, 0.5)" }}><b className='text-white'>CARGANDO LISTADO DE LIBROS...</b></Alert>) :
+            (<div>{bookList.length === 0 ? (<Alert className='text-center' style={{ backgroundColor: "rgba(255, 255, 255, 0.5)" }}><b className='text-white'>NO HAY LIBROS REGISTRADOS</b></Alert>) : (<BookReport bookList={bookList} setBookList={setBookList} handleDelete={handleDelete} handleUpdate={handleUpdate} adminView></BookReport>)}</div>)}
         </Col>
       </Row>
 
