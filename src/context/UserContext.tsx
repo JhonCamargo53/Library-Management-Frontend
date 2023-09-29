@@ -3,6 +3,7 @@ import { IUser } from '../interface';
 import { getCookieValueService } from '../service/CookieService';
 import { COOKIE_NAME } from '../Contants';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { setAuthorizationHeader } from '../instances/axiosInstance';
 
 interface Props {
     children: any
@@ -56,6 +57,7 @@ const UserContextProvider: React.FC<Props> = ({ children }) => {
             if (cookie) {
                 setUser(cookie.user);
                 setToken(cookie.token)
+                setAuthorizationHeader(cookie.token)
             } else {
                 setUser(null);
                 setToken(null)

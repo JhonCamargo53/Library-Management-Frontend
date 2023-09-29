@@ -1,4 +1,4 @@
-import {Col, Container, Row } from "reactstrap";
+import { Col, Container, Row } from "reactstrap";
 
 const Home = () => {
 
@@ -14,21 +14,27 @@ const Home = () => {
                 display: "flex", // Usa flexbox para centrar el contenido verticalmente
                 flexDirection: "column", // Alinea los elementos verticalmente
                 justifyContent: "center", // Centra verticalmente
-                alignItems: "center", // Centra horizontalmente
             }}>
-                <h1 className="display-4"><b>Bienvenido a Nuestra Biblioteca</b></h1>
-                <p className="lead">
-                    <b>
-                        Explora nuestra colección de libros para todas las edades e intereses.
+                <Row>
+                    <Col className="col-12">
 
-                    </b>
+                        <h1 className="display-4"><b>Bienvenido a Nuestra Biblioteca</b></h1>
+                    </Col>
+
+                    <Col>
+                        <p className="lead">
+                            <b>
+                                Explora nuestra colección de libros para todas las edades e intereses.
+
+                            </b>
 
 
-                </p>
-                <hr className="my-4" />
-                <p>
-                    ¿Listo para sumergirte en el mundo de la lectura? ¡Descubre nuevos mundos ahora!
-                </p>
+                        </p>
+                        <hr className="my-4" />
+                        <p>
+                            ¿Listo para sumergirte en el mundo de la lectura? ¡Descubre nuevos mundos ahora!
+                        </p></Col>
+                </Row>
 
                 <hr className="my-4" />
 

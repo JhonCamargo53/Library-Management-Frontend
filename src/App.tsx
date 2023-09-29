@@ -1,6 +1,6 @@
 
 import './App.css'
-import { HashRouter as Router, Routes, Route} from 'react-router-dom';
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import Login from './views/Login';
 import UserContextProvider from './context/UserContext';
 import Home from './views/Home';
@@ -16,7 +16,7 @@ function App() {
 
   return (
 
-    <Container fluid className='m-0 p-0'>
+    <Container fluid className='m-0 p-0 ' >
 
       <Router>
 
@@ -39,7 +39,7 @@ function App() {
                 </Route>
 
                 <Route path="/book/borrow" element={<ProtectedRoute allowedRole={["USER"]} />}>
-                  <Route path="/book/borrow" element={<BorrowBooks/>} />
+                  <Route path="/book/borrow" element={<BorrowBooks />} />
                 </Route>
 
                 {/*Admin Access*/}

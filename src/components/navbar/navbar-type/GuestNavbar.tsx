@@ -10,20 +10,20 @@ const GuestNavbar = () => {
 
     return (
 
-        <Navbar className='navbar mb-4' expand="md" style={{ background: "rgb(32,178,170)" }}>
-            <NavbarBrand><b>Library - Management - Guest</b></NavbarBrand>
+        <Navbar className='navbar mb-4  navbar-dark bg-dark' expand="md">
+            <NavbarBrand className='text-white'><b>Library - Management</b></NavbarBrand>
             <NavbarToggler onClick={toggleNavbar} />
             <Collapse isOpen={collapsed} navbar>
                 <Nav className='mr-auto mb-2 mb-lg-0 fw-bold' navbar>
                     <NavItem>
-                        <NavLink to="/home" style={{ textDecoration: 'none', color: 'black' }} className="mx-1">
+                        <NavLink to="/home" style={{ textDecoration: 'none', color: 'white' }} className="mx-1">
                             <i className="bi bi-house-door-fill"></i> Inicio
                         </NavLink>
                     </NavItem>
-                    <NavLink to="/register" style={{ textDecoration: 'none', color: 'black' }} className="mx-1">
+                    <NavLink to="/register" style={{ textDecoration: 'none', color: 'white' }} className="mx-1">
                         <i className="bi bi-person-circle"></i> Registrarse
                     </NavLink>
-                    <NavLink to="/login" style={{ textDecoration: 'none', color: 'black' }} className="mx-1">
+                    <NavLink to="/login"style={{ textDecoration: 'none', color: 'white' }} className="mx-1">
                         <i className="bi bi-door-open-fill"></i>  Iniciar Sesión
                     </NavLink>
 

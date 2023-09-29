@@ -36,23 +36,23 @@ const AdminNavbar = () => {
   }
 
   return (
-    <Navbar className='navbar mb-4' expand="md" style={{ background: "rgb(32,178,170)" }}>
-      <NavbarBrand><b>Library - Management - Admin</b></NavbarBrand>
+    <Navbar className='navbar mb-4  navbar-dark bg-dark' expand="lg">
+            <NavbarBrand className='text-white'><b>Library - Management</b></NavbarBrand>
       <NavbarToggler onClick={toggleNavbar} />
       <Collapse isOpen={collapsed} navbar>
         <Nav className='mr-auto mb-2 mb-lg-0 fw-bold' navbar>
 
           <NavItem>
-            <NavLink to="/home" style={{ textDecoration: 'none',color: 'black' }} className="mx-1">
+            <NavLink to="/home" style={{ textDecoration: 'none', color: 'white' }} className="mx-1">
             <i className="bi bi-house-door-fill"></i> Inicio
             </NavLink>
           </NavItem>
 
-          <NavLink to="/book/management" style={{ textDecoration: 'none',color: 'black' }} className="mx-1">
+          <NavLink to="/book/management" style={{ textDecoration: 'none', color: 'white' }} className="mx-1">
           <i className="bi bi-journal-bookmark-fill"></i>  Administrar
           </NavLink>
 
-          <a onClick={handleLogout} style={{ textDecoration: 'none',color: 'black',cursor: 'pointer' }} className="mx-1"><i className="bi bi-box-arrow-right"></i>Cerrar Sesión</a>
+          <a onClick={handleLogout} style={{ textDecoration: 'none',color: 'white',cursor: 'pointer' }} ><i className="bi bi-box-arrow-right mx-1" ></i>Cerrar Sesión</a>
 
         </Nav>
       </Collapse>
