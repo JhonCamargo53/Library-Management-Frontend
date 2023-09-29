@@ -108,20 +108,20 @@ const BookManager = () => {
     }}>
 
       <Col md={12} className='text-center rounded p-1'>
-        <b>TODOS LOS LIBROS REGISTRADOS</b>
+        <b><h2>TODOS LOS LIBROS REGISTRADOS</h2></b>
         <hr />
       </Col>
-      
-          <Row>
-            <Col lg={12}>
-              <BookForm bookList={bookList} setBookList={setBookList}></BookForm>
-            </Col>
-            <Col className='p-3' >
-              {loading ? (<Alert className='text-center' style={{ backgroundColor: "rgba(255, 255, 255, 0.5)" }}><b>CARGANDO LISTADO DE LIBROS...</b></Alert>) :
-                (<div>{bookList.length === 0 ? (<Alert className='text-center' style={{ backgroundColor: "rgba(255, 255, 255, 0.5)" }}><b>NO HAY LIBROS REGISTRADOS</b></Alert>) : (<BookReport bookList={bookList} setBookList={setBookList} handleDelete={handleDelete} handleUpdate={handleUpdate} adminView></BookReport>)}</div>)}
-            </Col>
-          </Row>
-      
+
+      <Row>
+        <Col lg={12}>
+          <BookForm bookList={bookList} setBookList={setBookList}></BookForm>
+        </Col>
+        <Col className='p-3' >
+          {loading ? (<Alert className='text-center' style={{ backgroundColor: "rgba(255, 255, 255, 0.5)" }}><b>CARGANDO LISTADO DE LIBROS...</b></Alert>) :
+            (<div>{bookList.length === 0 ? (<Alert className='text-center' style={{ backgroundColor: "rgba(255, 255, 255, 0.5)" }}><b>NO HAY LIBROS REGISTRADOS</b></Alert>) : (<BookReport bookList={bookList} setBookList={setBookList} handleDelete={handleDelete} handleUpdate={handleUpdate} adminView></BookReport>)}</div>)}
+        </Col>
+      </Row>
+
     </Container>
   )
 }
