@@ -72,7 +72,8 @@ const Register = () => {
   return (
     <Container className='p-3 text-white rounded' style={{
       backgroundColor: "rgba(0, 0, 0, 0.5)",
-      color: "#fff"
+      color: "#fff",
+      marginTop: "50px",
     }}>
       <Row>
 

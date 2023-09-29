@@ -66,17 +66,18 @@ const Login = () => {
 
     <Container className='p-3 text-white rounded' style={{
       backgroundColor: "rgba(0, 0, 0, 0.5)",
-      color: "#fff"
+      color: "#fff",
+      marginTop: "50px",
     }}>
       <Row className="d-flex justify-content-center">
-        <Col md={12} className='text-center rounded p-1  '>
-          <b><h2>INICIAR SESIÓN</h2></b>
-          <hr />
-        </Col>
+        
         <Col sm={12} lg={6} className="d-flex justify-content-center align-items-center">
 
           <Col md={12}>
-
+          <Col md={12} className='text-center rounded p-1  '>
+          <b><h2>INICIAR SESIÓN</h2></b>
+          <hr />
+        </Col>
             <form onSubmit={handleSubmit} className='p-3 text-white rounded' style={{
               backgroundColor: "rgba(255, 255, 255, 0.5)",
             }}>

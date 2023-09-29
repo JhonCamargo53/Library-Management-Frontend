@@ -1,81 +1,97 @@
 import { Col, Container, Row } from "reactstrap";
+import { useUserContext } from "../context/UserContext";
 
 const Home = () => {
 
+    const { user } = useUserContext();
+
 
     return (
-        <div>
-            {/* Sección de bienvenida */}
-            <Container fluid className="rounded text-center" style={{
-                backgroundColor: "rgba(0, 0, 0, 0.5)",
-                color: "#fff",
-                padding: "20px",
-                height: "90vh", // Ajusta la altura al 100% del viewport
-                display: "flex", // Usa flexbox para centrar el contenido verticalmente
-                flexDirection: "column", // Alinea los elementos verticalmente
-                justifyContent: "center", // Centra verticalmente
-            }}>
-                <Row>
-                    <Col className="col-12">
+        <Container className="rounded text-center" style={{
+            backgroundColor: "rgba(0, 0, 0, 0.5)",
+            color: "#fff",
+            padding: "20px",
+            flexDirection: "column", // Alinea los elementos verticalmente
+            justifyContent: "center", // Centra verticalmente
+            marginTop: "50px",
+        }}>
+            <Row>
+                <Col className="col-12">
 
-                        <h1 className="display-4"><b>Bienvenido a Nuestra Biblioteca</b></h1>
-                    </Col>
+                    <h1 style={{
+                        fontFamily: 'sans-serif',
+                        fontSize: '3.5em',
+                        fontWeight: 'bold',
+                        textShadow: '2px 2px 4px rgba(0, 0, 0, 0.3)',
+                    }}>
+                        <b>Bienvenido a Nuestra Biblioteca</b></h1>
 
-                    <Col>
-                        <p className="lead">
-                            <b>
-                                Explora nuestra colección de libros para todas las edades e intereses.
+                    {user && <h2>{user.firstName + " " + user.lastName}</h2>}
+                </Col>
 
-                            </b>
+                <Col>
+                    <p className="lead">
+                        <b>
+                            Explora nuestra colección de libros para todas las edades e intereses.
 
-
-                        </p>
-                        <hr className="my-4" />
-                        <p>
-                            ¿Listo para sumergirte en el mundo de la lectura? ¡Descubre nuevos mundos ahora!
-                        </p></Col>
-                </Row>
-
-                <hr className="my-4" />
-
-                <Row>
-                    <Col>
-                        <Container>
-                            <Row>
-                                <Col>
-                                    <h2>Nuestros Libros Destacados</h2>
-                                    {/* Aquí puedes mostrar algunos libros destacados */}
-                                    <ul>
-                                        <li>Libro 1</li>
-                                        <li>Libro 2</li>
-                                        <li>Libro 3</li>
-                                    </ul>
-                                </Col>
-                                <Col>
-                                    <Container>
-                                        <Row>
-                                            <Col>
-                                                <h2>Categorías Populares</h2>
-                                                {/* Aquí puedes mostrar algunas categorías populares */}
-                                                <ul>
-                                                    <li>Novelas</li>
-                                                    <li>Ciencia Ficción</li>
-                                                    <li>Historia</li>
-                                                    <li>Infantil</li>
-                                                </ul>
-                                            </Col>
-                                        </Row>
-                                    </Container>
-                                </Col>
-                            </Row>
-                        </Container>
-                    </Col>
-                </Row>
-            </Container>
+                        </b>
 
 
+                    </p>
+                    <hr className="my-4 rounded" />
+                    <p>
+                        <h2 style={{
+                            fontFamily: 'sans-serif',
+                            fontSize: '2.5em',
+                            fontWeight: 'bold',
+                            textShadow: '2px 2px 4px rgba(0, 0, 0, 0.3)',
+                        }}>
+                            ¿Listo para sumergirte en el mundo de la lectura?
+                            <br />
+                            ¡Descubre nuevos mundos ahora!
+                        </h2>
+                    </p>
+                </Col>
+            </Row>
 
-        </div>
+            <hr className="my-4" />
+
+            <Row>
+                <Col>
+                    <Container>
+                        <Row>
+
+                            <Col sm={12} lg={6} className='d-flex justify-content-center align-items-center'>
+                                <img className="tex-center img-fluid rounded mb-2" src="https://bibliotecasvirtualesmundotecnologico.weebly.com/uploads/5/8/8/1/58813631/1173726.png?399" alt="" />
+                            </Col>
+
+                            <Col className="d-flex justify-content-center align-items-center">
+                                <Container>
+                                    <hr />
+
+                                    <Row >
+                                        <h2>Categorías Populares</h2>
+                                        <hr />
+                                        <Col >
+
+                                            <ul>
+                                                <li>Novelas</li>
+                                                <li>Ciencia Ficción</li>
+                                                <li>Historia</li>
+                                                <li>Infantil</li>
+                                            </ul>
+                                        </Col>
+                                    </Row>
+                                    <hr />
+
+                                </Container>
+
+                            </Col>
+                        </Row>
+                    </Container>
+                </Col>
+            </Row>
+        </Container>
     );
 };
 
