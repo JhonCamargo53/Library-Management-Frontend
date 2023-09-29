@@ -173,8 +173,7 @@ const BookCard: React.FC<Props> = ({
 
     <Container className="justify-content-center my-1 pt-3 text-center rounded"
       style={{
-        maxHeight: '40rem',
-        minHeight: '40rem',
+       
         backgroundColor: "rgba(255, 255, 255, 0.5)"
       }}
     >
@@ -187,7 +186,7 @@ const BookCard: React.FC<Props> = ({
         value={updatedBook.title}
         onChange={handleInputChange}
         required
-      />) : (<b className="text-dark">{book.title} </b>)}
+      />) : (<b style={{textTransform:"uppercase"}} className="text-dark">{book.title} </b>)}
       
       {!adminView ? (<i className={isFavorite ? 'bi bi-star-fill ' : 'bi bi-star-fill text-white '} style={{ color: 'yellow' }} onClick={() => handleFavorites()}></i>) : (null)}
 
@@ -293,7 +292,7 @@ const BookCard: React.FC<Props> = ({
                   onChange={handleInputChange}
                   className="mb-2"
                   required
-                />) : (<b className="text-dark">{book.description}</b>)}
+                />) : (<p style={{ textAlign: 'justify'}}><b className="text-dark">{book.description}</b></p>)}
 
             </Col>
           </Row>
@@ -324,7 +323,7 @@ const BookCard: React.FC<Props> = ({
 
                   </Button>)}
 
-                  <Button color="warning" className="col-12 mt-1" onClick={() => handleEdit()}>
+                  <Button color="warning" className="col-12 mt-1 mb-2" onClick={() => handleEdit()}>
                     <i className="bi bi-pencil-square m-2"></i>
                     <b>{editMode ? ("CANCELAR EDICIÓN") : ("EDITAR")}</b>
                   </Button>
