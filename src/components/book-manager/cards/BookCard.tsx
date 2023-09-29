@@ -1,4 +1,4 @@
-import { Card, CardBody, CardTitle, CardHeader, Badge, Col, Row, CardFooter, Button, Input } from "reactstrap"
+import { CardTitle, Badge, Col, Row, Button, Input, Container } from "reactstrap"
 import { IBook } from "../../../interface";
 import { useState, useEffect } from "react";
 import { validateBookValuesService } from "../../../service/ValidationService";
@@ -170,184 +170,182 @@ const BookCard: React.FC<Props> = ({
   }
 
   return (
-    <Card className="justify-content-center my-1 "
+
+    <Container className="justify-content-center my-1 pt-3 text-center rounded"
       style={{
         maxHeight: '40rem',
-        minHeight: '40rem'
+        minHeight: '40rem',
+        backgroundColor: "rgba(255, 255, 255, 0.5)"
       }}
     >
-      <CardHeader className="text-center" style={{ background: "rgb(32,178,170)" }}>
-        {editMode ? (<Input
-          type="text"
-          id="title"
-          name="title"
-          placeholder="Titulo"
-          value={updatedBook.title}
-          onChange={handleInputChange}
-          required
-        />) : (<b>{book.title} </b>)}
 
-        {!adminView ? (<i className={isFavorite ? 'bi bi-star-fill ' : 'bi bi-star-fill text-white '} style={{ color: 'yellow' }} onClick={() => handleFavorites()}></i>) : (null)}
+      {editMode ? (<Input
+        type="text"
+        id="title"
+        name="title"
+        placeholder="Titulo"
+        value={updatedBook.title}
+        onChange={handleInputChange}
+        required
+      />) : (<b className="text-dark">{book.title} </b>)}
+      
+      {!adminView ? (<i className={isFavorite ? 'bi bi-star-fill ' : 'bi bi-star-fill text-white '} style={{ color: 'yellow' }} onClick={() => handleFavorites()}></i>) : (null)}
 
-      </CardHeader>
+      <hr />
 
-      <CardBody className="text-center" style={{ background: "rgb(245,245,245)" }} >
-        <Row >
-          <Col >
 
-            {!borrowView ? (<Row>
-              <Col>
-                <Badge pill color={book.availability ? "success" : "danger"} className="my-2">
-                  {book.availability ? "Disponible" : "No disponible"}
-                </Badge>
-              </Col>
-            </Row>) : (null)}
+      <Row >
+        <Col >
 
-            <Row>
-              <Col>
+          {!borrowView ? (<Row>
+            <Col>
+              <Badge pill color={book.availability ? "success" : "danger"} className="my-2">
+                {book.availability ? "Disponible" : "No disponible"}
+              </Badge>
+            </Col>
+          </Row>) : (null)}
+
+          <Row>
+            <Col>
+
+              {editMode ? (<Input
+                type="text"
+                id="releaseYear"
+                name="releaseYear"
+                placeholder="Año"
+                value={updatedBook.releaseYear}
+                onChange={handleInputChange}
+                className="mb-1"
+                required
+              />) : (<b>{book.releaseYear}</b>)}
+
+            </Col>
+          </Row>
+
+          <Row>
+            <Col>
+
+              <CardTitle tag="h5">
 
                 {editMode ? (<Input
                   type="text"
-                  id="releaseYear"
-                  name="releaseYear"
-                  placeholder="Año"
-                  value={updatedBook.releaseYear}
+                  id="owner"
+                  name="owner"
+                  placeholder="Autor"
+                  value={updatedBook.owner}
+                  onChange={handleInputChange}
+                  className="mb-2"
+                  required
+                />) : (<b>{book.owner}</b>)}
+              </CardTitle>
+
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+
+              {editMode ? (<div>
+                <img
+                  alt="Card"
+                  src={updatedBook.imgUrl}
+                  className="tex-center img-fluid rounded mb-2"
+                  style={{
+                    maxHeight: '15rem',
+                    minHeight: '15rem'
+
+                  }}
+                />
+                <Input
+                  type="text"
+                  id="imgUrl"
+                  name="imgUrl"
+                  placeholder="URL de Imagen"
+                  value={updatedBook.imgUrl}
                   onChange={handleInputChange}
                   className="mb-1"
                   required
-                />) : (<b>{book.releaseYear}</b>)}
+                />
+              </div>) : (<img
+                alt="Card"
+                src={book.imgUrl}
+                className="tex-center img-fluid rounded my-1"
+                style={{
+                  maxHeight: '20rem',
+                  minHeight: '20rem'
 
-              </Col>
-            </Row>
-
-            <Row>
-              <Col>
-
-                <CardTitle tag="h5">
-
-                  {editMode ? (<Input
-                    type="text"
-                    id="owner"
-                    name="owner"
-                    placeholder="Autor"
-                    value={updatedBook.owner}
-                    onChange={handleInputChange}
-                    required
-                  />) : (<b>{book.owner}</b>)}
-                </CardTitle>
-
-              </Col>
-            </Row>
-
-            <Row>
-              <Col>
-
-                {editMode ? (<div>
-                  <img
-                    alt="Card"
-                    src={updatedBook.imgUrl}
-                    className="tex-center img-fluid rounded mb-2"
-                    style={{
-                      maxHeight: '15rem',
-                      minHeight: '15rem'
-
-                    }}
-                  />
-                  <Input
-                    type="text"
-                    id="imgUrl"
-                    name="imgUrl"
-                    placeholder="URL de Imagen"
-                    value={updatedBook.imgUrl}
-                    onChange={handleInputChange}
-                    className="mb-1"
-                    required
-                  />
-                </div>) : (<img
-                  alt="Card"
-                  src={book.imgUrl}
-                  className="tex-center img-fluid rounded"
-                  style={{
-                    maxHeight: '20rem',
-                    minHeight: '20rem'
-
-                  }}
-                />)}
+                }}
+              />)}
 
 
-              </Col>
-            </Row>
+            </Col>
+          </Row>
 
-            <Row>
-              <Col>
+          
 
-                <CardTitle >
-                  {editMode ? (<Input
-                    type="text"
-                    id="description"
-                    name="description"
-                    placeholder="Descripción"
-                    value={updatedBook.description}
-                    onChange={handleInputChange}
-                    required
-                  />) : (<b>{book.description}</b>)}
+          <Row>
+            <Col>
+                {editMode ? (<Input
+                  type="text"
+                  id="description"
+                  name="description"
+                  placeholder="Descripción"
+                  value={updatedBook.description}
+                  onChange={handleInputChange}
+                  className="mb-2"
+                  required
+                />) : (<b className="text-dark">{book.description}</b>)}
 
-                </CardTitle>
-
-              </Col>
-            </Row>
-
-
-            <Row >
-              <Col>
-
-                {(book.availability && !adminView) ? (
-                  <Button color="success" className="col-12" onClick={() => handleBorrowBook()}>
-
-                    <b>PRESTAR LIBRO</b>
-
-                  </Button>) :
-                  (null)}
+            </Col>
+          </Row>
 
 
-                {(adminView && book.availability) ? (
-                  <div>
+          <Row >
+            <Col>
 
-                    {!editMode ? (<Button color="danger" className="col-12" onClick={() => handleDelete(book.id as string)}>
+              {(book.availability && !adminView) ? (
+                <Button color="success" className="col-12" onClick={() => handleBorrowBook()}>
+
+                  <b>PRESTAR LIBRO</b>
+
+                </Button>) :
+                (null)}
+
+
+              {(adminView && book.availability) ? (
+                <div>
+
+                  {!editMode ? (<Button color="danger" className="col-12" onClick={() => handleDelete(book.id as string)}>
                     <i className="bi bi-trash3-fill m-2"></i>
-                      <b>ELIMINAR</b>
+                    <b>ELIMINAR</b>
 
-                    </Button>) : (<Button color="success" className="col-12" onClick={() => handleUpdateCard()}>
+                  </Button>) : (<Button color="success" className="col-12" onClick={() => handleUpdateCard()}>
                     <i className="bi bi-floppy-fill m-2"></i>
-                      <b>GUARDAR EDICIÓN</b>
+                    <b>GUARDAR EDICIÓN</b>
 
-                    </Button>)}
+                  </Button>)}
 
-                    <Button color="warning" className="col-12 mt-1" onClick={() => handleEdit()}>
-                      <i className="bi bi-pencil-square m-2"></i>
-                      <b>{editMode ? ("CANCELAR EDICIÓN") : ("EDITAR")}</b>
-                    </Button>
+                  <Button color="warning" className="col-12 mt-1" onClick={() => handleEdit()}>
+                    <i className="bi bi-pencil-square m-2"></i>
+                    <b>{editMode ? ("CANCELAR EDICIÓN") : ("EDITAR")}</b>
+                  </Button>
 
-                  </div>) :
-                  (null)}
+                </div>) :
+                (null)}
 
-                {(!book.availability && !borrowView) ? (<Button color="info" className="col-12"><b>LIBRO ACTUALMENTE EN USO</b></Button>) : (null)}
+              {(!book.availability && !borrowView) ? (<Button color="info" className="col-12"><b>LIBRO ACTUALMENTE EN USO</b></Button>) : (null)}
 
-                {borrowView ? (<Button color="success" className="col-12" onClick={() => handleReturnBook()}><b>REGRESAR LIBRO</b></Button>) : (null)}
+              {borrowView ? (<Button color="success" className="col-12" onClick={() => handleReturnBook()}><b>REGRESAR LIBRO</b></Button>) : (null)}
 
-              </Col>
-            </Row>
-          </Col>
-        </Row>
+            </Col>
+          </Row>
+        </Col>
+      </Row>
 
 
-      </CardBody>
 
-      <CardFooter style={{ background: "rgb(32,178,170)" }}>
 
-      </CardFooter>
 
-    </Card>
+    </Container>
   )
 
 }
