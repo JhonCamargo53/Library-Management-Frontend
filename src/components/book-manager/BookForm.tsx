@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { IBook } from "../../interface";
 import { genericErrorAlertService, genericSuccessAlertService } from "../../service/AlertService";
-import { Row, Col, FormGroup, Input, Button, Card, CardHeader, CardBody, FormText } from "reactstrap";
+import { Row, Col, FormGroup, Input, Button,FormText } from "reactstrap";
 import { addBook } from "../../controllers/BookController";
 import { validateBookValuesService } from "../../service/ValidationService";
 
@@ -69,110 +69,101 @@ const BookForm: React.FC<Props> = ({ bookList, setBookList }) => {
   }
 
   return (
-    <Card>
-      <CardHeader className="text-center"><h2>Ingresar Libro</h2></CardHeader>
-      <CardBody>
-        <Row>
-          <Col>
 
-            <form onSubmit={handleSubmit}>
-              <Row>
-                <Col lg={3} sm={6}>
-                  <FormGroup>
+    <Row>
+      <Col>
 
-                    <Input
-                      type="text"
-                      id="title"
-                      name="title"
-                      value={bookValues.title}
-                      onChange={handleInputChange}
-                      required
-                    />
-                    <FormText>
-                      Título (*)
-                    </FormText>
-                  </FormGroup>
-                </Col>
-                <Col lg={3} sm={6}>
-                  <FormGroup>
+        <form onSubmit={handleSubmit}>
+          <Row>
+            <Col lg={3} sm={6}>
+              <FormGroup>
+                <Input
+                  type="text"
+                  id="title"
+                  name="title"
+                  value={bookValues.title}
+                  onChange={handleInputChange}
+                  required
+                />
+                <FormText>
+                  <b style={{ color: "white" }}>Título (*)</b>
+                </FormText>
+              </FormGroup>
+            </Col>
 
-                    <Input
-                      type="text"
-                      id="owner"
-                      name="owner"
-                      value={bookValues.owner}
-                      onChange={handleInputChange}
-                      required
-                    />
-                    <FormText>
-                      Propietario (*)
-                    </FormText>
-                  </FormGroup>
-                </Col>
+            <Col lg={3} sm={6}>
+              <FormGroup>
+                <Input
+                  type="text"
+                  id="owner"
+                  name="owner"
+                  value={bookValues.owner}
+                  onChange={handleInputChange}
+                  required
+                />
+                <FormText>
+                  <b style={{ color: "white" }}>Propietario (*)</b>
+                </FormText>
+              </FormGroup>
+            </Col>
 
-                <Col lg={3} sm={6}>
-                  <FormGroup>
+            <Col lg={3} sm={6}>
+              <FormGroup>
+                <Input
+                  type="text"
+                  id="releaseYear"
+                  name="releaseYear"
+                  value={bookValues.releaseYear}
+                  onChange={handleInputChange}
+                  required
+                />
+                <FormText>
+                  <b style={{ color: "white" }}> Año de Publicación (*)</b>
+                </FormText>
+              </FormGroup>
+            </Col>
 
-                    <Input
-                      type="text"
-                      id="releaseYear"
-                      name="releaseYear"
-                      value={bookValues.releaseYear}
-                      onChange={handleInputChange}
-                      required
-                    />
-                    <FormText>
-                      Año de Publicación (*)
-                    </FormText>
-                  </FormGroup>
-                </Col>
+            <Col lg={3} sm={6}>
+              <FormGroup>
+                <Input
+                  type="text"
+                  id="imgUrl"
+                  name="imgUrl"
+                  value={bookValues.imgUrl}
+                  onChange={handleInputChange}
+                  required
+                />
+                <FormText>
+                  <b style={{ color: "white" }}> URL de Imagen (*)</b>
+                </FormText>
+              </FormGroup>
+            </Col>
+          </Row>
 
-                <Col lg={3} sm={6}>
-                  <FormGroup>
-                    <Input
-                      type="text"
-                      id="imgUrl"
-                      name="imgUrl"
-                      value={bookValues.imgUrl}
-                      onChange={handleInputChange}
-                      required
-                    />
+          <Row>
+            <Col>
+              <FormGroup>
+                <Input
+                  type="textarea"
+                  id="description"
+                  name="description"
+                  value={bookValues.description}
+                  onChange={handleInputChange}
+                  required
+                />
+                <FormText>
+                  <b style={{ color: "white" }}>  Descripción (*)</b>
+                </FormText>
+              </FormGroup>
+            </Col>
+          </Row>
 
-                    <FormText>
-                      URL de Imagen (*)
-                    </FormText>
+          <Button style={{ background: "#3085d6" }} className="col-12" type="submit" disabled={loading}>{loading ? "Agregando Libro..." : "Agregar libro"}</Button>
+          <hr />
+        </form>
+      </Col>
+    </Row>
 
-                  </FormGroup>
-                </Col>
-              </Row>
-
-              <Row>
-                <Col>
-                  <FormGroup>
-
-                    <Input
-                      type="textarea"
-                      id="description"
-                      name="description"
-                      value={bookValues.description}
-                      onChange={handleInputChange}
-                      required
-                    />
-
-                    <FormText>
-                      Descripción (*)
-                    </FormText>
-
-                  </FormGroup>
-                </Col>
-              </Row>
-
-              <Button className="col-12" color="primary" type="submit" disabled={loading}>{loading ? "Agregando Libro..." : "Agregar libro"}</Button>
-            </form>
-          </Col>
-        </Row>
-      </CardBody>
-    </Card>
   )
 }
 

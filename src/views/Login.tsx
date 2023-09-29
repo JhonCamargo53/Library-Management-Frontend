@@ -26,7 +26,7 @@ const Login = () => {
 
     event.preventDefault();
 
-    if (loginValues.email.trim()==="" || loginValues.password.trim()=="") {
+    if (loginValues.email.trim() === "" || loginValues.password.trim() == "") {
       genericErrorAlertService("Completa todos los campos", "Es necesario completar toda la información para realizar el registro")
       return
     }

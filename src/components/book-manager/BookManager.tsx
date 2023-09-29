@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import BookForm from './BookForm'
-import { Alert, Card, CardBody, CardHeader, Col, Container, Row } from 'reactstrap'
+import { Alert, Col, Container, Row } from 'reactstrap'
 import BookReport from './BookReport'
 import { deleteBook, getBooks, updateBook } from '../../controllers/BookController'
 import { IBook } from '../../interface'
@@ -18,7 +18,7 @@ const BookManager = () => {
 
   }, [])
 
-  
+
 
   const loadBookList = async () => {
 
@@ -102,16 +102,16 @@ const BookManager = () => {
   }
 
   return (
-    <Container fluid>
-      <Card>
+    <Container fluid className='p-3 text-white rounded' style={{
+      backgroundColor: "rgba(0, 0, 0, 0.5)",
+      color: "#fff"
+    }}>
 
-        <CardHeader className='text-center'>
-
-          <b>TODOS LOS LIBROS REGISTRADOS</b>
-
-        </CardHeader>
-
-        <CardBody>
+      <Col md={12} className='text-center rounded p-1'>
+        <b>TODOS LOS LIBROS REGISTRADOS</b>
+        <hr />
+      </Col>
+      
           <Row>
             <Col lg={12}>
               <BookForm bookList={bookList} setBookList={setBookList}></BookForm>
@@ -121,9 +121,7 @@ const BookManager = () => {
                 (<div>{bookList.length === 0 ? (<Alert color='warning' className='text-center'><b>No hay libros registrados</b></Alert>) : (<BookReport bookList={bookList} setBookList={setBookList} handleDelete={handleDelete} handleUpdate={handleUpdate} adminView></BookReport>)}</div>)}
             </Col>
           </Row>
-        </CardBody>
-
-      </Card>
+      
     </Container>
   )
 }

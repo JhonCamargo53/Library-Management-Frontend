@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { getAvailableBooks } from '../controllers/BookController';
 import { IBook } from '../interface';
 import { genericErrorAlertService, genericSuccessAlertService } from '../service/AlertService';
-import { Container, Row, Col, Alert, FormGroup, Input, Button, FormText, Card, CardHeader, CardBody } from 'reactstrap';
+import { Container, Row, Col, Alert, FormGroup, Input, Button, FormText} from 'reactstrap';
 import BookReport from '../components/book-manager/BookReport';
 
 const AvailableBooks = () => {
@@ -80,57 +80,59 @@ const AvailableBooks = () => {
     }
 
     return (
-        <Container fluid>
+        <Container fluid className='p-3 text-white rounded' style={{
+            backgroundColor: "rgba(0, 0, 0, 0.5)",
+            color: "#fff"
+        }}>
 
+            <Col md={12} className='text-center rounded p-1  '>
+                <b><h2>LIBROS DISPONIBLES</h2></b>
+                <hr />
+            </Col>
 
-            <Card>
+            <Row className='my-2'>
+                <Col lg={3}>
+                    <FormGroup>
 
-                <CardHeader className='text-center'>
+                        <Input type="select" name="filter" id="filter" placeholder="Ingrese su contraseña" onChange={(e) => setFilterValues({ ...filterValues, selectedFilter: e.target.value })} value={filterValues.selectedFilter}>
+                            <option value="">Selecione un filtro</option>
+                            <option value="owner">Por autor</option>
+                            <option value="title">Por Titulo</option></Input>
+                        <FormText>
+                            <b style={{ color: "white" }}>Filtro de libros</b>
+                        </FormText>
 
-                    <b>LIBROS DISPONIBLES</b>
+                    </FormGroup>
+                </Col>
+                <Col lg={5}>
+                    <FormGroup>
+                        <Input type="text" name="filterArgs" id="filterArgs" placeholder="Ingrese la información" onChange={(e) => setFilterValues({ ...filterValues, filterArgs: e.target.value })} value={filterValues.filterArgs} />
+                        <FormText>
+                            <b style={{ color: "white" }}>Información a filtrar</b>
+                        </FormText>
+                    </FormGroup>
+                </Col>
+                <Col lg={4}>
+                    <Button className='col-12' style={{ background: "#3085d6" }} onClick={() => bookFilter()}><b>FILTRAR</b></Button>
+                </Col>
 
-                </CardHeader>
-                <CardBody>
+                {isFiltered ? (<Col lg={12}>
+                    <Button color='danger' onClick={() => handleRemoveFilter()} className='col-12'> <b>Quitar filtro</b></Button>
+                </Col>) : (null)}
 
-                    <Row className='my-2'>
-                        <Col lg={3}>
-                            <FormGroup>
-                                <Input type="select" name="filter" id="filter" placeholder="Ingrese su contraseña" onChange={(e) => setFilterValues({ ...filterValues, selectedFilter: e.target.value })} value={filterValues.selectedFilter}>
-                                    <option value="">Selecione un filtro</option>
-                                    <option value="owner">Por autor</option>
-                                    <option value="title">Por Titulo</option></Input>
-                                <FormText>
-                                    Filtro de libros
-                                </FormText>
-                            </FormGroup>
-                        </Col>
-                        <Col lg={5}>
-                            <FormGroup>
-                                <Input type="text" name="filterArgs" id="filterArgs" placeholder="Ingrese la información" onChange={(e) => setFilterValues({ ...filterValues, filterArgs: e.target.value })} value={filterValues.filterArgs} />
-                                <FormText>
-                                    Información a filtrar
-                                </FormText>
-                            </FormGroup>
-                        </Col>
-                        <Col lg={4}>
-                            <Button className='col-12' onClick={() => bookFilter()}><b>FILTRAR</b></Button>
-                        </Col>
+                <Col>
+                    <hr />
+                </Col>
 
-                        {isFiltered ? (<Col lg={12}>
-                            <Button color='danger' onClick={() => handleRemoveFilter()} className='col-12'> <b>Quitar filtro</b></Button>
-                        </Col>) : (null)}
+            </Row>
 
-                    </Row>
-                    <Row>
-                        <Col className='p-3' >
-                            {loading ? (<Alert color='warning' className='text-center'><b>Cargando listado de libros...</b></Alert>)
-                                :
-                                (<div>{bookList.length === 0 ? (<Alert color='warning' className='text-center'><b>No hay ningun libro disponible</b></Alert>) : (<BookReport bookList={bookList} setBookList={setBookList}></BookReport>)}</div>)}
-                        </Col>
-                    </Row>
-                </CardBody>
-
-            </Card>
+            <Row>
+                <Col className='p-3' >
+                    {loading ? (<Alert color='warning' className='text-center'><b>Cargando listado de libros...</b></Alert>)
+                        :
+                        (<div>{bookList.length === 0 ? (<Alert color='warning' className='text-center'><b>No hay ningun libro disponible</b></Alert>) : (<BookReport bookList={bookList} setBookList={setBookList}></BookReport>)}</div>)}
+                </Col>
+            </Row>
 
         </Container>
     )
