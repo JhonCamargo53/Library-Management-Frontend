@@ -4,6 +4,7 @@ import { getCookieValueService } from '../service/CookieService';
 import { COOKIE_NAME } from '../Contants';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { setAuthorizationHeader } from '../instances/axiosInstance';
+import { genericSuccessAlertService } from '../service/AlertService';
 
 interface Props {
     children: any
@@ -45,6 +46,7 @@ const UserContextProvider: React.FC<Props> = ({ children }) => {
         setUser(null);
         setToken(null);
         document.cookie = `${COOKIE_NAME}=; max-age=0`;
+        genericSuccessAlertService("Sesión cerrada con exito","Regrese pronto");
         navigate('home');
     }
 
