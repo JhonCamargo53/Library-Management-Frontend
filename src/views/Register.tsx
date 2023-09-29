@@ -45,7 +45,7 @@ const Register = () => {
 
       const response = await registerUser(registerValues);
 
-      setCookieService(COOKIE_NAME, JSON.stringify(response.data), 60 * 24)
+      setCookieService(COOKIE_NAME, JSON.stringify(response.data), 60 * 60 * 24)
 
       genericSuccessAlertService("Registro exitoso", "Bienvenido " + response.data.user.firstName + " " + response.data.user.lastName)
       navigate('home');

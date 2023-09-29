@@ -37,7 +37,7 @@ const Login = () => {
 
       const response = await loginUser(loginValues.email, loginValues.password);
 
-      setCookieService(COOKIE_NAME, JSON.stringify(response.data), 60 * 24)
+      setCookieService(COOKIE_NAME, JSON.stringify(response.data), 60 * 60 * 24)
 
       genericSuccessAlertService("Sesión iniciada", "Bienvenido " + response.data.user.firstName + " " + response.data.user.lastName)
 
@@ -70,14 +70,14 @@ const Login = () => {
       marginTop: "50px",
     }}>
       <Row className="d-flex justify-content-center">
-        
+
         <Col sm={12} lg={6} className="d-flex justify-content-center align-items-center">
 
           <Col md={12}>
-          <Col md={12} className='text-center rounded p-1  '>
-          <b><h2>INICIAR SESIÓN</h2></b>
-          <hr />
-        </Col>
+            <Col md={12} className='text-center rounded p-1  '>
+              <b><h2>INICIAR SESIÓN</h2></b>
+              <hr />
+            </Col>
             <form onSubmit={handleSubmit} className='p-3 text-white rounded' style={{
               backgroundColor: "rgba(255, 255, 255, 0.5)",
             }}>
