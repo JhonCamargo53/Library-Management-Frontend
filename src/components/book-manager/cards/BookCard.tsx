@@ -171,10 +171,10 @@ const BookCard: React.FC<Props> = ({
 
   return (
 
-    <Container className="justify-content-center my-1 pt-3 text-center rounded h-100 d-flex flex-column"
+    <Container className="justify-content-center my-1 pt-3 text-center rounded h-100  "
       style={{
-       
-        backgroundColor: "rgba(255, 255, 255, 0.5)"
+
+        backgroundColor: "rgba(255, 255, 255, 0.67)"
       }}
     >
 
@@ -186,8 +186,11 @@ const BookCard: React.FC<Props> = ({
         value={updatedBook.title}
         onChange={handleInputChange}
         required
-      />) : (<b style={{textTransform:"uppercase"}} className="text-dark">{book.title} </b>)}
-      
+      />) : (<p style={{
+        textTransform: "uppercase", fontSize: '20px',
+        WebkitTextStroke: '1px black'
+      }}><b style={{ textTransform: "uppercase" }} className="text-dark" >{book.title} </b></p>)}
+
       {!adminView ? (<i className={isFavorite ? 'bi bi-star-fill ' : 'bi bi-star-fill text-white '} style={{ color: 'yellow' }} onClick={() => handleFavorites()}></i>) : (null)}
 
       <hr />
@@ -216,7 +219,10 @@ const BookCard: React.FC<Props> = ({
                 onChange={handleInputChange}
                 className="mb-1"
                 required
-              />) : (<b>{book.releaseYear}</b>)}
+              />) : (<p style={{
+                fontSize: '30px',
+                WebkitTextStroke: '1px black', // WebKit (Safari, Chrome)
+              }}><b >{book.releaseYear}</b></p>)}
 
             </Col>
           </Row>
@@ -235,7 +241,10 @@ const BookCard: React.FC<Props> = ({
                   onChange={handleInputChange}
                   className="mb-2"
                   required
-                />) : (<b>{book.owner}</b>)}
+                />) : (<p style={{
+                  fontSize: '30px',
+                  WebkitTextStroke: '1px black', // WebKit (Safari, Chrome)
+                }}><b>{book.owner}</b></p>)}
               </CardTitle>
 
             </Col>
@@ -278,21 +287,18 @@ const BookCard: React.FC<Props> = ({
 
             </Col>
           </Row>
-
-          
-
-          <Row>
-            <Col>
-                {editMode ? (<Input
-                  type="text"
-                  id="description"
-                  name="description"
-                  placeholder="Descripción"
-                  value={updatedBook.description}
-                  onChange={handleInputChange}
-                  className="mb-2"
-                  required
-                />) : (<p style={{ textAlign: 'justify'}}><b className="text-dark">{book.description}</b></p>)}
+          <Row >
+            <Col className=" m-2 rounded">
+              {editMode ? (<Input
+                type="textarea"
+                id="description"
+                name="description"
+                placeholder="Descripción"
+                value={updatedBook.description}
+                onChange={handleInputChange}
+                className="mb-2"
+                required
+              />) : (<p style={{ textAlign: 'justify' }}><b className="text-dark">{book.description}</b></p>)}
 
             </Col>
           </Row>
@@ -331,7 +337,7 @@ const BookCard: React.FC<Props> = ({
                 </div>) :
                 (null)}
 
-              {(!book.availability && !borrowView) ? (<Button color="info" className="col-12 mb-2"> <i className ="bi bi-alarm-fill m-1"></i><b>LIBRO ACTUALMENTE EN USO</b></Button>) : (null)}
+              {(!book.availability && !borrowView) ? (<Button color="info" className="col-12 mb-2"> <i className="bi bi-alarm-fill m-1"></i><b>LIBRO ACTUALMENTE EN USO</b></Button>) : (null)}
 
               {borrowView ? (<Button color="success" className="col-12 mb-2" onClick={() => handleReturnBook()}><b>REGRESAR LIBRO</b></Button>) : (null)}
 
