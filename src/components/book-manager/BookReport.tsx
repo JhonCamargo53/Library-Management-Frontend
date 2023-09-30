@@ -18,7 +18,7 @@ const BookReport: React.FC<Props> = ({ bookList, setBookList, handleDelete, hand
         <Row>
             {
                 bookList.map((book, index) =>
-                    <Col lg={3} sm={6} key={index}>
+                    <Col lg={3} sm={6} key={index} className='mb-3'>
                         <BookCard book={book} bookList={bookList} setBookList={setBookList} handleDelete={handleDelete} handleUpdate={handleUpdate} adminView={adminView} borrowView={borrowView}></BookCard>
                     </Col>
                 )

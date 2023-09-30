@@ -171,7 +171,7 @@ const BookCard: React.FC<Props> = ({
 
   return (
 
-    <Container className="justify-content-center my-1 pt-3 text-center rounded"
+    <Container className="justify-content-center my-1 pt-3 text-center rounded h-100 d-flex flex-column"
       style={{
        
         backgroundColor: "rgba(255, 255, 255, 0.5)"
@@ -298,11 +298,11 @@ const BookCard: React.FC<Props> = ({
           </Row>
 
 
-          <Row >
+          <Row className="mt-auto">
             <Col>
 
               {(book.availability && !adminView) ? (
-                <Button color="success" className="col-12" onClick={() => handleBorrowBook()}>
+                <Button color="success" className="col-12 mb-2" onClick={() => handleBorrowBook()}>
 
                   <b>PRESTAR LIBRO</b>
 
@@ -313,11 +313,11 @@ const BookCard: React.FC<Props> = ({
               {(adminView && book.availability) ? (
                 <div>
 
-                  {!editMode ? (<Button color="danger" className="col-12" onClick={() => handleDelete(book.id as string)}>
+                  {!editMode ? (<Button color="danger" className="col-12 mb-2" onClick={() => handleDelete(book.id as string)}>
                     <i className="bi bi-trash3-fill m-2"></i>
                     <b>ELIMINAR</b>
 
-                  </Button>) : (<Button color="success" className="col-12" onClick={() => handleUpdateCard()}>
+                  </Button>) : (<Button color="success" className="col-12 mb-2" onClick={() => handleUpdateCard()}>
                     <i className="bi bi-floppy-fill m-2"></i>
                     <b>GUARDAR EDICIÓN</b>
 
@@ -331,9 +331,9 @@ const BookCard: React.FC<Props> = ({
                 </div>) :
                 (null)}
 
-              {(!book.availability && !borrowView) ? (<Button color="info" className="col-12"> <i className ="bi bi-alarm-fill m-1"></i><b>LIBRO ACTUALMENTE EN USO</b></Button>) : (null)}
+              {(!book.availability && !borrowView) ? (<Button color="info" className="col-12 mb-2"> <i className ="bi bi-alarm-fill m-1"></i><b>LIBRO ACTUALMENTE EN USO</b></Button>) : (null)}
 
-              {borrowView ? (<Button color="success" className="col-12" onClick={() => handleReturnBook()}><b>REGRESAR LIBRO</b></Button>) : (null)}
+              {borrowView ? (<Button color="success" className="col-12 mb-2" onClick={() => handleReturnBook()}><b>REGRESAR LIBRO</b></Button>) : (null)}
 
             </Col>
           </Row>
