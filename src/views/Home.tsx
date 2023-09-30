@@ -39,7 +39,7 @@ const Home = () => {
 
                     </p>
                     <hr className="my-4 rounded" />
-                    <p>
+                    
                         <h2 style={{
                             fontFamily: 'sans-serif',
                             fontSize: '2.5em',
@@ -50,7 +50,7 @@ const Home = () => {
                             <br />
                             ¡Descubre nuevos mundos ahora!
                         </h2>
-                    </p>
+                   
                 </Col>
             </Row>
 
